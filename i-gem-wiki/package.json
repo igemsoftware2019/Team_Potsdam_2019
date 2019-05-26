@@ -12,12 +12,12 @@
   },
   "scripts": {
     "analyze": "source-map-explorer ./build/static/js/*.js",
-    "start": "react-scripts start",
+    "start": "cross-env NODE_PATH=./src react-scripts start",
     "build": "npm run build:react && npm run build:bundle",
-    "build:react": "react-scripts build",
+    "build:react": "cross-env NODE_PATH=./src react-scripts build",
     "build:bundle": "webpack --config webpack.config.js",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "cross-env NODE_PATH=./src react-scripts test",
+    "eject": "cross-env NODE_PATH=./src react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
