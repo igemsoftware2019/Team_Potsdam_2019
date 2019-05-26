@@ -13,9 +13,10 @@
   "scripts": {
     "analyze": "source-map-explorer ./build/static/js/*.js",
     "start": "cross-env NODE_PATH=./src react-scripts start",
-    "build": "npm run build:react && npm run build:bundle",
+    "build": "npm run build:react && npm run build:bundle && npm run build:igem",
     "build:react": "cross-env NODE_PATH=./src react-scripts build",
     "build:bundle": "webpack --config webpack.config.js",
+    "build:igem": "cd ./dist/scripts/ && node buildTemplate.js",
     "test": "cross-env NODE_PATH=./src react-scripts test",
     "eject": "cross-env NODE_PATH=./src react-scripts eject"
   },

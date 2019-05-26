@@ -1,0 +1,816 @@
+
+<html>
+<script>
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	$(document).ready(function() {
+
+		//remove the HQ_page id
+		$("#HQ_page").attr('id','');
+
+		//highlight current page on the menu
+		highlight_current_page_menu();
+			
+		//accessing submenus
+		$(".menu_item").click(function(){
+			$(".submenu_control_icon", this).toggleClass("open");
+			$(this).next(".submenu").fadeToggle(400);
+		});
+		
+		//mobile menu access 
+		$(".igem_2019_team_mobile_bar").click(function(){
+			$(this).next().toggleClass("displaying_menu");
+		});
+		
+	});
+
+
+		function highlight_current_page_menu() {
+			
+			var page_url="https://2019.igem.org/";
+			page_url = page_url + wgPageName;
+			$("a[href$='"+ page_url +"']").children().addClass("current_page");
+			
+			//if the page is in a submenu, open the submenu and make the appropiate changes
+			if( $( ".current_page" ).hasClass( "submenu_item" )){
+				
+				$(".current_page").parent().parent().fadeToggle(400);
+				$(".current_page").parent().parent().prev().addClass("current_page");
+				$(".menu_item.current_page > .submenu_control_icon").toggleClass("open");
+				
+			}
+		}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+</script>
+
+
+<style>
+/**************************************************************************************************************************************************************************************************/
+
+
+
+/**************************************************************************************************************************************************************************************************/
+/* DEFAULT WIKI SETTINGS */
+/**************************************************************************************************************************************************************************************************/
+
+
+	#home_logo, #sideMenu { display:none; }
+	#sideMenu, #top_title, .patrollink  {display:none;}
+	#content { margin-left:0px; margin-top:-7px; padding:0px; width:100%;}
+	body {background-color:white; }
+	#bodyContent h1, #bodyContent h2, #bodyContent h3, #bodyContent h4, #bodyContent h5 { margin-bottom: 0px; }
+	#bodyContent a[href ^="https://"], .link-https { padding-right:0px;}
+	
+	.judges-will-not-evaluate { border: 4px solid #F42534; padding: 2% !important; width: 92%!important;}
+
+
+/**************************************************************************************************************************************************************************************************/
+/* MENU */
+/**************************************************************************************************************************************************************************************************/
+
+	/*wrapping for the menu*/
+	.igem_2019_team_menu { 
+		background-color:#cecece; 
+		border-left: 1px solid #635d5d;	
+		float:right; 
+		height:100vh; 
+		max-width: 270px;
+		overflow-y: auto;
+		overflow-x: hidden;
+		padding:0px;
+		position:fixed; 
+		right:0%;
+		text-align:left;
+		width: 15%; 
+	}
+
+	/*controlling menu visibility*/
+	.igem_2019_team_menu.displaying_menu{
+		display:block;	
+	}
+
+	/*links in the menu*/
+	.igem_2019_team_menu  a {
+		color: #484848;
+		text-decoration:none;
+	}
+
+	/*images in the menu*/
+	.igem_2019_team_menu img {
+		width:100%;
+	}
+
+	/*level 1 menu items*/
+	.igem_2019_team_menu .menu_item {
+    	background-color: #cecece;
+    	border-bottom: 1px solid #635d5d;
+    	clear: both;
+		color: #484848;
+    	cursor: pointer;
+		float: left;
+    	font-size: 120%;
+    	font-weight: bold;
+    	padding: 15px 0px 15px 5%;
+   	 	width: 100%;
+	}
+
+	/*level 1 menu items without submenus*/
+	.igem_2019_team_menu .menu_item.direct_link {
+		color: #484848;
+		padding-left: 15%;
+	}
+	
+	/*level 1 menu items on hover*/
+	.igem_2019_team_menu .menu_item:hover {
+		background-color: #ecb656 !important;
+	}
+
+	/*icon for expanding and collapsing level 1 menut items*/
+	.igem_2019_team_menu .menu_item .submenu_control_icon {
+		color: #484848;
+		float: left;
+		width: 10%;
+	}
+
+	/* submenu icon  "-"*/
+	.igem_2019_team_menu .menu_item .submenu_control_icon::before {
+		content: "+"; 
+	}
+
+	/* submenu icon  "-"*/
+	.igem_2019_team_menu .menu_item .submenu_control_icon.open::before {
+		content: "-"; 
+	}
+
+	
+	/*level 2 menu (submenu) wrapper*/
+	.igem_2019_team_menu .submenu{
+		background-color: #ececec;
+		clear:both;
+		display:none;
+		float: left;  		
+		width:100%;
+	}
+
+	/*level 2 menu (submenu) item*/
+	.igem_2019_team_menu .submenu .submenu_item {
+		border-bottom: 1px solid #cecece;
+  		color: #635d5d;
+    	height: 30px;
+   	 	float: left;
+    	font-size: 110%;
+		font-weight: bold;
+    	padding: 12px 0px 0px 15%;
+    	width: 100%;
+	}
+
+	/*level 2 menu (submenu) items on hover*/
+	.igem_2019_team_menu .submenu .submenu_item:hover {
+		background-color: #ecb656 !important;
+	}
+
+	/*color for highlighting current page on the wiki*/
+	.igem_2019_team_menu .submenu .submenu_item.current_page,
+	.igem_2019_team_menu .menu_item.current_page, 
+	.igem_2019_team_menu .menu_item.direct_link.current_page {	
+		background-color:#a2d3d0;
+	}
+
+
+/*mobile menu bar styling*/
+/**************************************************************************************************************************************************************************************************/
+
+	/*mobile bar that controls the menu*/
+	.igem_2019_team_mobile_bar {
+		background-color:#ececec; 
+		border-bottom: 1px solid #cecece;
+		cursor:pointer;
+		display:none; 
+		float:left;
+		margin-top: 0;
+		padding: 5px 0;
+		position:fixed;
+		width:100%; 
+	}
+	
+	/*mobile logo*/
+	.igem_logo_mobile {
+		float:left; 
+		padding-left: 5%;
+		width: 30%; 
+	}
+
+	/*image within the mobile logo*/
+	.igem_logo_mobile img {
+		width:70px;
+	}
+	
+	/*mobile expand collapse button*/
+	.igem_menu_control_mobile {
+		float:right; 
+		padding-right:5%; 
+		padding-top:5px;
+		text-align:right; 
+		width: 30%; 
+	}
+
+	/*image for mobile expand collapse button*/
+	.igem_menu_control_mobile img {
+		width:25px;
+	}
+
+
+	/*add extra padding to the menu to improve mobile scrolling*/
+	.menu_padding{
+		float:left;
+		height:100px;
+	}
+
+
+/**************************************************************************************************************************************************************************************************/
+/* CONTENT OF THE PAGE */
+/**************************************************************************************************************************************************************************************************/
+
+	/* general wrapper for the content */
+	.igem_2019_team_content {
+		background-color:white; 
+		display:block;
+		width: 87%;
+	}
+
+	/* subwrapper to center content */
+	.igem_2019_team_content .igem_2019_team_column_wrapper {
+		margin:auto;
+		max-width: 1400px;
+		width:90%;
+	}
+
+
+
+/*general styling*/
+/**************************************************************************************************************************************************************************************************/
+
+	/*size for title h tags*/
+	.igem_2019_team_content .igem_2019_team_column_wrapper h1 { font-size: 210%;}
+	.igem_2019_team_content .igem_2019_team_column_wrapper h2 { font-size: 190%;}
+	.igem_2019_team_content .igem_2019_team_column_wrapper h3 { font-size: 170%;}
+	.igem_2019_team_content .igem_2019_team_column_wrapper h4 { font-size: 150%;}
+	.igem_2019_team_content .igem_2019_team_column_wrapper h5 { font-size: 140%;}
+	.igem_2019_team_content .igem_2019_team_column_wrapper h6 { font-size: 130%;}
+
+
+	/*titles h1, h2*/
+	.igem_2019_team_content .igem_2019_team_column_wrapper h1, .igem_2019_team_content .igem_2019_team_column_wrapper h2 {
+		border-bottom:0px; 
+		color: #635d5d;
+		font-family: "Arial Black", Gadget, sans-serif;
+		padding: 10px 0px;
+	}
+
+	/*titles h3, h3, h5, h6 */
+	.igem_2019_team_content .igem_2019_team_column_wrapper h3, 
+	.igem_2019_team_content .igem_2019_team_column_wrapper h4, 
+	.igem_2019_team_content .igem_2019_team_column_wrapper h5, 
+	.igem_2019_team_content .igem_2019_team_column_wrapper h6 { 
+		border-bottom:0px; 
+		color: #635d5d;  
+		font-family: "Arial Black", Gadget, sans-serif;
+		padding: 5px 0px;
+	}
+
+	/* text p tag*/
+	.igem_2019_team_content .igem_2019_team_column_wrapper p { 
+		font-size: 130%;
+		font-family: Arial, Helvetica, sans-serif;
+		padding: 5px 0px;
+		text-align: left;
+		color: #484848;
+	}
+
+	/* Links a tag*/
+	.igem_2019_team_content .igem_2019_team_column_wrapper a {
+		color: #00a19b;
+		font-weight: bold; 
+		text-decoration: underline;
+		text-decoration-color:#00a19b;
+		transition: all 0.4s ease;
+		-webkit-transition: all 0.4s ease;
+		-moz-transition: all 0.4s ease; 
+		-ms-transition: all 0.4s ease; 
+		-o-transition: all 0.4s ease; 
+	}
+
+	/* hover for the links */
+	.igem_2019_team_content .igem_2019_team_column_wrapper a:hover { 
+		color: #085156;
+		text-decoration:none;
+	}
+
+
+	/* Table tag*/
+	.igem_2019_team_content .igem_2019_team_column_wrapper table { 
+		border: 1px solid #635d5d; 
+		border-collapse: collapse; 
+		font-size: 130%;
+		width: 100%; 
+	}
+
+	/* table cells */
+	.igem_2019_team_content .igem_2019_team_column_wrapper td { 
+		border: 1px solid #cecece; 
+		border-collapse: collapse; 
+		font-size: 105%;
+		padding: 10px;
+		vertical-align: text-top; 
+	}
+
+	/* table headers */
+	.igem_2019_team_content .igem_2019_team_column_wrapper th { 
+		background-color:#cecece; 
+		border: 1px solid #635d5d; 
+		border-collapse: collapse; 
+		font-size: 110%;
+		padding: 10px; 
+		vertical-align: text-top; 
+	}
+
+
+
+	/* non numbered lists */
+	.igem_2019_team_content .igem_2019_team_column_wrapper ul, .igem_2019_team_content .igem_2019_team_column_wrapper ol {
+		font-size: 130%;
+		font-family: Arial, Helvetica, sans-serif;
+		padding:0px 20px;
+	}
+
+
+	/*font sizing within list nesting*/
+	.igem_2019_team_content .igem_2019_team_column_wrapper ul ul li, .igem_2019_team_content .igem_2019_team_column_wrapper ul ul ul li, 
+	.igem_2019_team_content .igem_2019_team_column_wrapper ul ol li, .igem_2019_team_content .igem_2019_team_column_wrapper ul ul ol li, 
+	.igem_2019_team_content .igem_2019_team_column_wrapper ol ol li, .igem_2019_team_content .igem_2019_team_column_wrapper ul ol ul li, 
+	.igem_2019_team_content .igem_2019_team_column_wrapper ol ul li, .igem_2019_team_content .igem_2019_team_column_wrapper ul ol ol li, 
+	.igem_2019_team_content .igem_2019_team_column_wrapper ol ul ul li, .igem_2019_team_content .igem_2019_team_column_wrapper ol ol ul li, 
+ 	.igem_2019_team_content .igem_2019_team_column_wrapper ol ol ol li, .igem_2019_team_content .igem_2019_team_column_wrapper ol ul ol li{ font-size: 76%; }
+
+
+
+/*layout classes*/
+/**************************************************************************************************************************************************************************************************/
+
+	/*main layout class */
+	.igem_2019_team_content .igem_2019_team_column_wrapper .column  { 
+		float:left;
+		margin: 1% 2%;
+		padding: 0px;
+	}
+
+	/* 100% */
+	.igem_2019_team_content .igem_2019_team_column_wrapper .column.full_size { width:96%; }
+
+	/* 66% */
+	.igem_2019_team_content .igem_2019_team_column_wrapper .column.two_thirds_size { width: 62.6%; }
+
+	/* 33% */
+	.igem_2019_team_content .igem_2019_team_column_wrapper .column.third_size { width: 29.3%; }
+
+
+
+
+	/*all images*/
+	.igem_2019_team_content .igem_2019_team_column_wrapper .column.full_size img, 
+	.igem_2019_team_content .igem_2019_team_column_wrapper .column.two_thirds_size img,
+	.igem_2019_team_content .igem_2019_team_column_wrapper .column.third_size img {
+		margin-bottom: 15px;
+		width: 100%; 
+	}
+
+
+	/* page break */
+	.igem_2019_team_content .igem_2019_team_column_wrapper .clear {
+		clear:both;
+	}
+	/*add extra space to page break with clear class*/
+	.igem_2019_team_content .igem_2019_team_column_wrapper .clear.extra_space {
+		height: 30px;
+	}
+
+	/* horizontal line to divide the page*/
+	.igem_2019_team_content .igem_2019_team_column_wrapper .line_divider {
+    	border-top: 1px solid #cecece;
+	  	margin: auto;
+   	 	width: 98%;
+	}
+
+
+
+	
+/*support classes*/
+/**************************************************************************************************************************************************************************************************/
+
+
+	/*Button  */
+	/************************************************/
+	.igem_2019_team_content .igem_2019_team_column_wrapper .button_link {
+		font-size: 130%;
+		margin: 30px auto;
+		text-align: center;
+	}
+
+	.igem_2019_team_content .igem_2019_team_column_wrapper .button_link a  {
+		background-color: #00a19bad !important;
+		color: #000 !important;
+		font-weight: bold;
+		margin: auto;
+		text-decoration: none !important;
+		padding: 10px 15px !important;
+	}
+
+	.igem_2019_team_content .igem_2019_team_column_wrapper .button_link a:hover {
+		background-color: #ffb819 !important;   
+	}
+
+	
+
+	/*highlight */
+	/************************************************/
+	.igem_2019_team_content .igem_2019_team_column_wrapper .highlight { 
+		padding: 15px 20px;
+	}
+
+
+	.igem_2019_team_content .igem_2019_team_column_wrapper .highlight p, 
+	.igem_2019_team_content .igem_2019_team_column_wrapper .highlight h1, 
+	.igem_2019_team_content .igem_2019_team_column_wrapper .highlight h2,
+	.igem_2019_team_content .igem_2019_team_column_wrapper .highlight h3,
+	.igem_2019_team_content .igem_2019_team_column_wrapper .highlight h4,
+	.igem_2019_team_content .igem_2019_team_column_wrapper .highlight h5,
+	.igem_2019_team_content .igem_2019_team_column_wrapper .highlight h6 {
+		padding: 5px 15px;
+	}
+
+	.igem_2019_team_content .igem_2019_team_column_wrapper .highlight.decoration_background {
+		background-color: #ececec; 
+	}
+
+	.igem_2019_team_content .igem_2019_team_column_wrapper .highlight.decoration_A_top {
+    	border-top: 4px solid #00a19bad;
+	}
+
+
+	.igem_2019_team_content .igem_2019_team_column_wrapper .highlight.decoration_A_full {
+    	border: 4px solid #00a19bad;
+	}
+
+	.igem_2019_team_content .igem_2019_team_column_wrapper .highlight.decoration_B_top {
+    	border-top: 4px solid #ffb819
+	}
+
+
+	.igem_2019_team_content .igem_2019_team_column_wrapper .highlight.decoration_B_full {
+    	border: 4px solid #ffb819;
+	}
+
+
+
+
+/*mobile*/
+/**************************************************************************************************************************************************************************************************/
+
+
+	/* 1800px  */
+	/************************************************/
+	@media only screen and (max-width: 1800px) {
+		.igem_2019_team_content { width: 85%;}
+		.igem_2019_team_menu {display:block;}	
+}
+
+	/* 1400px  */
+	/************************************************/
+	@media only screen and (max-width: 1400px) {
+		.igem_2019_team_menu .menu_item { font-size:100%;}
+		.igem_2019_team_menu .submenu .submenu_item { font-size:90%;}
+		.igem_2019_team_menu {display:block;}
+	}
+
+
+	/* 1100px  */
+	/************************************************/
+	@media only screen and (max-width: 1100px) {
+		.igem_2019_team_content {width:100%; margin-left:0px;}
+		
+		.igem_2019_team_menu {display:none;float:right;margin-top:47px;max-width:100%;position:fixed;width:25%;}
+		
+		.igem_2019_team_mobile_bar {display:block;}
+		
+		.igem_2019_team_content .igem_2019_team_column_wrapper .column.full_size, .igem_2019_team_content .igem_2019_team_column_wrapper .column.two_thirds_size,.igem_2019_team_content .igem_2019_team_column_wrapper .column.third_size {width:96%; }
+
+	}
+
+	/* 850px  */
+	/************************************************/
+		@media only screen and (max-width: 850px) {
+		.igem_2019_team_menu {width:40%;}
+	}
+
+	/*500px  */
+	/************************************************/
+	@media only screen and (max-width: 500px) {
+		.igem_2019_team_menu {min-width:100%;width:100%;}
+	}
+
+
+/**************************************************************************************************************************************************************************************************/
+
+
+
+
+
+</style>
+
+
+<!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!--- THIS IS WHERE THE HTML BEGINS --->
+<!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+<head> 
+
+	<!-- This tells the browser that your page is responsive -->
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+</head>
+
+
+
+<!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!--- Menu --->
+<!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+
+<div class="igem_2019_team_mobile_bar">
+		
+	<div class="igem_logo_mobile">
+		<img src="https://2019.igem.org/wiki/images/3/3c/Igem_mobile_menu_logo.svg">
+	</div>
+
+
+	<div class="igem_menu_control_mobile">
+		<img id="menu_control_image" src="https://2019.igem.org/wiki/images/e/ee/2019_team_menu_icon.svg">
+	</div>
+
+</div>
+
+
+
+
+<div class="igem_2019_team_menu">
+
+
+	<a href="https://2019.igem.org/Team:Potsdam">
+		<img src="https://placehold.it/350x150/ececec/cecece">
+	</a>
+
+
+
+		<a href="https://2019.igem.org/Team:Potsdam">
+			<div class="menu_item direct_link">
+				HOME
+			</div> 
+		</a>
+
+		<!-- Team -->
+		<div class="menu_item">
+			<div class="submenu_control_icon"> </div>
+			TEAM
+		</div> 
+		<div class="submenu">
+		
+			<a href="https://2019.igem.org/Team:Potsdam/Team">
+				<div class="submenu_item">
+					Team Members
+				</div>
+			</a>
+
+			<a href="https://2019.igem.org/Team:Potsdam/Collaborations">
+				<div class="submenu_item">
+					Collaborations
+				</div>
+			</a>
+		</div>
+
+
+		<!-- Project -->
+		<div class="menu_item">
+			<div class="submenu_control_icon"> </div>
+			PROJECT
+		</div> 
+		<div class="submenu">
+		
+			<a href="https://2019.igem.org/Team:Potsdam/Description">
+				<div class="submenu_item">
+					Description
+				</div>
+			</a>
+
+			<a href="https://2019.igem.org/Team:Potsdam/Design">
+				<div class="submenu_item">
+					Design
+				</div>
+			</a>
+
+			<a href="https://2019.igem.org/Team:Potsdam/Experiments">
+				<div class="submenu_item">
+					Experiments
+				</div>
+			</a>
+
+
+			<a href="https://2019.igem.org/Team:Potsdam/Notebook">
+				<div class="submenu_item">
+					Notebook
+				</div>
+			</a>
+			
+			<a href="https://2019.igem.org/Team:Potsdam/Contribution">
+				<div class="submenu_item">
+					Contribution
+				</div>
+			</a>
+
+			<a href="https://2019.igem.org/Team:Potsdam/Results">
+				<div class="submenu_item">
+					Results
+				</div>
+			</a>
+
+
+			<a href="https://2019.igem.org/Team:Potsdam/Demonstrate">
+				<div class="submenu_item">
+					Demonstrate
+				</div>
+			</a>
+
+			<a href="https://2019.igem.org/Team:Potsdam/Improve">
+				<div class="submenu_item">
+					Improve
+				</div>
+			</a>
+
+			<a href="https://2019.igem.org/Team:Potsdam/Attributions">
+				<div class="submenu_item">
+					Attributions 
+				</div>
+			</a>
+
+		</div>
+
+
+		<div class="menu_item">
+			<div class="submenu_control_icon"> </div>
+			PARTS
+		</div>
+		<div class="submenu">
+			
+			<a href="https://2019.igem.org/Team:Potsdam/Parts">
+				<div class="submenu_item">
+					Parts Overview
+				</div>		
+			</a>
+
+			<a href="https://2019.igem.org/Team:Potsdam/Basic_Part">
+				<div class="submenu_item">
+					Basic Parts
+				</div>
+			</a>
+
+			<a href="https://2019.igem.org/Team:Potsdam/Composite_Part">
+				<div class="submenu_item">
+					Composite Parts
+				</div>
+			</a>
+
+			<a href="https://2019.igem.org/Team:Potsdam/Part_Collection">
+				<div class="submenu_item">
+					Part Collection
+				</div>
+			</a>
+		</div> 
+
+		
+		
+		
+		
+
+		<a href="https://2019.igem.org/Team:Potsdam/Safety">
+			<div class="menu_item direct_link">
+				SAFETY
+			</div> 
+		</a>
+
+
+
+
+
+
+		<div class="menu_item">
+			<div class="submenu_control_icon"> </div> 
+			HUMAN PRACTICES 
+		</div> 
+
+		<div class="submenu">
+
+			<a href="https://2019.igem.org/Team:Potsdam/Human_Practices">
+				<div class="submenu_item">
+					Human Practices
+				</div>
+			</a>
+
+
+			<a href="https://2019.igem.org/Team:Potsdam/Public_Engagement">
+				<div class="submenu_item">
+					Education & Engagement
+				</div>
+			</a>
+
+		</div>
+
+
+
+
+
+		<div class="menu_item">
+			<div class="submenu_control_icon"> </div> 
+			AWARDS
+		</div> 
+
+		<div class="submenu">
+
+			<a href="https://2019.igem.org/Team:Potsdam/Entrepreneurship">
+				<div class="submenu_item">
+					Entrepreneurship
+				</div>
+			</a>
+
+			<a href="https://2019.igem.org/Team:Potsdam/Hardware">
+				<div class="submenu_item">
+					Hardware
+				</div>
+			</a>
+
+			<a href="https://2019.igem.org/Team:Potsdam/Measurement">
+				<div class="submenu_item">
+					Measurement
+				</div>
+			</a>
+
+			<a href="https://2019.igem.org/Team:Potsdam/Model">
+				<div class="submenu_item">
+					Model
+				</div>
+			</a>
+
+			<a href="https://2019.igem.org/Team:Potsdam/Plant">
+				<div class="submenu_item">
+					Plant
+				</div>
+			</a>
+
+
+			<a href="https://2019.igem.org/Team:Potsdam/Software">
+				<div class="submenu_item">
+					Software
+				</div>
+			</a>
+
+		</div> 
+
+
+
+		<a href="https://igem.org/2019_Judging_Form?team=Potsdam">
+			<div class="menu_item direct_link">
+				JUDGING FORM ⇗ 
+			</div> 
+		</a>
+
+
+		
+		<div class="menu_padding"></div> 
+		
+
+
+
+
+</div>
+
+<!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!--- Content of the page  --->
+<!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+<div class="igem_2019_team_content">
+	<div class="igem_2019_team_column_wrapper">
+		<div class="clear extra_space"></div>		
+		<div class="clear extra_space"></div>
