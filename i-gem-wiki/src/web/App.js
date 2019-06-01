@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button } from 'reactstrap';
 import {
   Route,
   NavLink,
@@ -7,6 +8,7 @@ import {
 
 import Home from "./pages/Home";
 import Team from "./pages/Team";
+import Navbar from "./components/Navbar";
 import './App.css';
 // browser router root dir Team:Potsdam
 
@@ -17,6 +19,7 @@ class App extends Component {
         <header className="App-header">
           <img src="" className="App-logo" alt="logo" />
           <BrowserRouter basename="/Team:Potsdam">
+            <Button color="danger">Danger!</Button>
             <div>
               <h1>Simple SPA</h1>
               <ul className="header">
