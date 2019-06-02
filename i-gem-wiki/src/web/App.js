@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from 'reactstrap';
+import { Scrollbars } from 'react-custom-scrollbars';
 import {
   Route,
   NavLink,
@@ -8,32 +9,24 @@ import {
 
 import Home from "./pages/Home";
 import Team from "./pages/Team";
-import Navbar from "./components/Navbar";
-import './App.css';
+import IgemNavbar from "components/IgemNavbar";
+import './App.css'; 
 // browser router root dir Team:Potsdam
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src="" className="App-logo" alt="logo" />
-          <BrowserRouter basename="/Team:Potsdam">
-            <Button color="danger">Danger!</Button>
-            <div>
-              <h1>Simple SPA</h1>
-              <ul className="header">
-                <li><NavLink exact to="/">Home</NavLink></li>
-                <li><NavLink to="/Team">Team</NavLink></li>
-              </ul>
-              <div className="content">
-                <Route exact path="/" component={Home}/>
-                <Route path="/Team" component={Team}/>
-              </div>
+      <BrowserRouter basename="/Team:Potsdam">
+        <IgemNavbar></IgemNavbar>
+        <div className="App container-fluid">
+          <Scrollbars>
+            <div className="content">
+              <Route exact path="/" component={Home}/>
+              <Route path="/Team" component={Team}/>
             </div>
-          </BrowserRouter>
-        </header>
-      </div>
+          </Scrollbars>
+        </div>
+      </BrowserRouter>
     );
   }
 }

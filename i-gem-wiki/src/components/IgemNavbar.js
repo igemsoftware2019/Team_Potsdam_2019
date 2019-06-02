@@ -5,14 +5,18 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
+  NavLink as BootStrapNavLink,
   NavItem,
-  NavLink,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem } from 'reactstrap';
+import {
+  NavLink
+} from 'react-router-dom'
 
-export default class Navbar extends React.Component {
+//<DropdownItem divider />
+export default class IgemNavbar extends React.Component {
   constructor(props) {
     super(props);
 
@@ -29,34 +33,31 @@ export default class Navbar extends React.Component {
   render() {
     return (
       <div>
-        <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">reactstrap</NavbarBrand>
+        <Navbar fixed="top" color="dark" dark expand="md">
+          <NavbarBrand>
+            <NavLink exact to="/">Thermal UP</NavLink>
+          </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink href="/components/">Components</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
-              </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
-                  Options
+                  Team
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>
-                    Option 1
+                    <NavLink to="/Team/">Team Members</NavLink>
                   </DropdownItem>
                   <DropdownItem>
-                    Option 2
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>
-                    Reset
+                    <NavLink to="/Collaborations/">Collaborations</NavLink>
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
+              <NavItem>
+                <BootStrapNavLink>
+                  <NavLink to="/Safety/">Safety</NavLink>
+                </BootStrapNavLink>
+              </NavItem>
             </Nav>
           </Collapse>
         </Navbar>
