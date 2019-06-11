@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { Button } from 'reactstrap';
 import { Scrollbars } from 'react-custom-scrollbars';
 import {
   Route,
-  NavLink,
   BrowserRouter
 } from 'react-router-dom'
 
@@ -19,12 +17,10 @@ class App extends Component {
       <BrowserRouter basename="/Team:Potsdam">
         <IgemNavbar></IgemNavbar>
         <div className="App container-fluid">
-          <Scrollbars>
-            <div className="content">
-              <Route exact path="/" component={Home}/>
-              <Route path="/Team" component={Team}/>
-            </div>
-          </Scrollbars>
+          <div className="content">
+            <Route exact path="/" component={Home}/>
+            <Route path="/Team" component={Team}/>
+          </div>
         </div>
       </BrowserRouter>
     );

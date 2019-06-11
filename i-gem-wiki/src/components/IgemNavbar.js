@@ -5,7 +5,6 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavLink as BootStrapNavLink,
   NavItem,
   UncontrolledDropdown,
   DropdownToggle,
@@ -34,9 +33,7 @@ export default class IgemNavbar extends React.Component {
     return (
       <div>
         <Navbar fixed="top" color="dark" dark expand="md">
-          <NavbarBrand>
-            <NavLink exact to="/">Thermal UP</NavLink>
-          </NavbarBrand>
+          <NavLink className="navbar-brand" exact to="/">Thermal UP</NavLink>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
@@ -46,17 +43,15 @@ export default class IgemNavbar extends React.Component {
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>
-                    <NavLink to="/Team/">Team Members</NavLink>
+                    <NavLink className="nav-link" to="/Team/">Team Members</NavLink>
                   </DropdownItem>
                   <DropdownItem>
-                    <NavLink to="/Collaborations/">Collaborations</NavLink>
+                    <NavLink className="nav-link" to="/Collaborations/">Collaborations</NavLink>
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
               <NavItem>
-                <BootStrapNavLink>
-                  <NavLink to="/Safety/">Safety</NavLink>
-                </BootStrapNavLink>
+                <NavLink className="nav-link" to="/Safety/">Safety</NavLink>
               </NavItem>
             </Nav>
           </Collapse>
