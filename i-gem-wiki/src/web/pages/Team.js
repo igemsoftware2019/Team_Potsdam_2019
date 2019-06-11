@@ -1,6 +1,7 @@
 import React, { Component, useState, useEffect } from 'react'
 import { useTransition, animated as a} from 'react-spring'
 import shuffle from 'lodash/shuffle'
+import CustomScrollbar from 'components/CustomScrollbar';
 import useMeasure from 'utils/useMeasure'
 import useMedia from 'utils/useMedia'
 import data from 'data/teamData'
@@ -28,7 +29,7 @@ function TeamGrid() {
     update: ({ xy, width, height }) => ({ xy, width, height }),
     leave: { height: 0, opacity: 0 },
     config: { mass: 5, tension: 500, friction: 100 },
-    trail: 25
+    trail: 0
   })
 
   return (
@@ -46,9 +47,11 @@ function TeamGrid() {
 class Team extends Component {
   render() {
     return (
-      <div>
-        <h2>Team Members</h2>
-        <TeamGrid/>
+      <div className="Team">
+        <CustomScrollbar>
+          <h2>Team Members</h2>
+          <TeamGrid/>
+        </CustomScrollbar>
       </div>
     );
   }

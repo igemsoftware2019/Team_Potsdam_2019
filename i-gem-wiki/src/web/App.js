@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Scrollbars } from 'react-custom-scrollbars';
 import {
   Route,
   BrowserRouter
@@ -16,11 +15,9 @@ class App extends Component {
     return (
       <BrowserRouter basename="/Team:Potsdam">
         <IgemNavbar></IgemNavbar>
-        <div className="App container-fluid">
-          <div className="content">
-            <Route exact path="/" component={Home}/>
-            <Route path="/Team" component={Team}/>
-          </div>
+        <div className="content">
+          <Route exact path="/" component={Home}/>
+          <Route path="/Team" component={Team}/>
         </div>
       </BrowserRouter>
     );

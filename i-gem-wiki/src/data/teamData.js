@@ -1,72 +1,70 @@
 export default [
   {
-    css:
-      'url(https://images.pexels.com/photos/416430/pexels-photo-416430.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)',
-    height: 150
+    css: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
+    height: 1500
   },
   {
-    css:
-      'url(https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)',
-    height: 300
+    css: 'linear-gradient(135deg, #c3cfe2 0%, #c3cfe2 100%)',
+    height: 1500
   },
   {
-    css:
-      'url(https://images.pexels.com/photos/911738/pexels-photo-911738.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)',
-    height: 300
+    css: 'linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)',
+    height: 2000
   },
   {
-    css:
-      'url(https://images.pexels.com/photos/358574/pexels-photo-358574.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)',
-    height: 300
+    css: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+    height: 1400
   },
   {
-    css:
-      'url(https://images.pexels.com/photos/1738986/pexels-photo-1738986.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)',
-    height: 300
+    css: 'linear-gradient(135deg, #5ee7df 0%, #b490ca 100%)',
+    height: 2000
   },
   {
-    css:
-      'url(https://images.pexels.com/photos/96381/pexels-photo-96381.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)',
-    height: 300
+    css: 'linear-gradient(135deg, #d299c2 0%, #fef9d7 100%)',
+    height: 1500
   },
   {
-    css:
-      'url(https://images.pexels.com/photos/1005644/pexels-photo-1005644.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)',
-    height: 200
+    css: 'linear-gradient(135deg, #ebc0fd 0%, #d9ded8 100%)',
+    height: 1600
   },
   {
-    css:
-      'url(https://images.pexels.com/photos/227675/pexels-photo-227675.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)',
-    height: 300
+    css: 'linear-gradient(120deg, #f6d365 0%, #fda085 100%)',
+    height: 1400
   },
   {
-    css:
-      'url(https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)',
-    height: 200
+    css: 'linear-gradient(to top, #96fbc4 0%, #f9f586 100%)',
+    height: 2000
   },
   {
-    css:
-      'url(https://images.pexels.com/photos/327482/pexels-photo-327482.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)',
-    height: 400
+    css: 'linear-gradient(135deg, #d3cfe2 0%, #c3cfe2 100%)',
+    height: 1500
   },
   {
-    css:
-      'url(https://images.pexels.com/photos/988872/pexels-photo-988872.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)',
-    height: 200
+    css: 'linear-gradient(135deg, #f0c3fc 0%, #8ec5fc 100%)',
+    height: 2000
   },
   {
-    css:
-      'url(https://images.pexels.com/photos/249074/pexels-photo-249074.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)',
-    height: 150
+    css: 'linear-gradient(135deg, #f193fb 0%, #f5576c 100%)',
+    height: 1400
   },
   {
-    css:
-      'url(https://images.pexels.com/photos/310452/pexels-photo-310452.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)',
-    height: 400
+    css: 'linear-gradient(135deg, #6ee7df 0%, #b490ca 100%)',
+    height: 2000
   },
   {
-    css:
-      'url(https://images.pexels.com/photos/380337/pexels-photo-380337.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)',
-    height: 200
+    css: 'linear-gradient(135deg, #e299c2 0%, #fef9d7 100%)',
+    height: 1500
+  },
+  {
+    css: 'linear-gradient(135deg, #dbc0fd 0%, #d9ded8 100%)',
+    height: 1600
+  },
+  {
+    css: 'linear-gradient(120deg, #f7d365 0%, #fda085 100%)',
+    height: 1400
+  },
+  {
+    css: 'linear-gradient(to top, #a6fbc4 0%, #f9f586 100%)',
+    height: 2000
   }
 ]

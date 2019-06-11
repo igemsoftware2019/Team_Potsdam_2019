@@ -7,6 +7,7 @@ export default function useMedia(queries, values, defaultValue) {
     const handler = () => set(match)
     window.addEventListener('resize', handler)
     return () => window.removeEventListener('resize', handler)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return value
 }
