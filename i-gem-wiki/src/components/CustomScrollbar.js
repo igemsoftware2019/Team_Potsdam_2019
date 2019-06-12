@@ -15,9 +15,9 @@ export default class CustomScrollbar extends Component {
         this.setState({ top });
     }
     renderView({ style, ...props }) {
-      const { top } = this.state;
+      //const { top } = this.state;
       const viewStyle = {
-          'padding-right': 15,
+          paddingRight: 15,
       };
       return (
           <div
@@ -27,24 +27,22 @@ export default class CustomScrollbar extends Component {
       );
     }
     renderThumb({ style, ...props }) {
-        const { top } = this.state;
         const thumbStyle = {
-            'border-radius':'10px',
-            'width': 'inherit',
-            'background-color': 'rgba(0, 0, 0, 0.4)'
+            borderRadius: 10,
+            width: 'inherit',
+            backgroundColor: 'rgba(0, 0, 0, 0.4)'
         };
         return (
             <div style={{ ...style, ...thumbStyle }} {...props}/>
         );
     }
     renderTrack({ style, ...props }) {
-        const { top } = this.state;
         const trackStyle = {
-            'width': 10 ,
-            'right': 5,
-            'bottom': 5,
-            'top': 5,
-            'border-radius': 5
+            width: 10 ,
+            right: 5,
+            bottom: 5,
+            top: 5,
+            borderRadius: 5
         };
         return (
             <div style={{ ...style, ...trackStyle }} {...props}/>
