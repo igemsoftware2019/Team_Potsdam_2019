@@ -39,7 +39,7 @@ export default class IgemNavbar extends React.Component {
               <DropdownToggle nav caret>
                 Team
               </DropdownToggle>
-              <DropdownMenu right>
+              <DropdownMenu className="bg-dark" right>
                 <DropdownItem>
                   <NavLink className="nav-link" to="/Team/">Team Members</NavLink>
                 </DropdownItem>

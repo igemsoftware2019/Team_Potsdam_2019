@@ -32,17 +32,55 @@
   
 }
 
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
 .list > div {
   position: absolute;
   will-change: transform, width, height, opacity;
   padding: 15px;
 }
 
-.list > div > div {
+.team-card{
   position: relative;
   width: 100%;
-  height: 100%;
-  border-radius: 4px;
+  min-height: 100px;
+  overflow: hidden;
+  box-shadow: 0 23px 41px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.team-card:hover{
+  box-shadow: 0 23px 41px rgba(0,0,0,0.35), 0 18px 15px rgba(0,0,0,0.22)!important;
+}
+.team-card:hover > .back{
+  box-shadow: 0 23px 41px rgba(0,0,0,0.35), 0 18px 15px rgba(0,0,0,0.22)!important;
+}
+
+.team-card img {
+  margin-left: 0 0 5px 5px;
+  float: right;
+  opacity: inherit;
+  width: 100px;
+  height: 100px;
+}
+
+.team-card h3{
+  opacity: inherit;
+  margin-left: 15px;
+  display: block;
+  margin: 2px 0 0 0;
+}
+.team-card p{
+  opacity: inherit;
+  margin-left: 15px;
+  display: block;
+  margin: 2px 0 0 0;
 }
 
 .Team{	
