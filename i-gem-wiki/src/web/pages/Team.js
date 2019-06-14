@@ -23,20 +23,11 @@ function Card(props){
   const loremIpsum = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam"
   const [random] = useState(Math.random())
   const desc = loremIpsum.substring(0,Math.floor(random * loremIpsum.length))
-  const [height, setHeight] = useState(0)
-  const ref = useRef(null)
-
-  useEffect(() => {
-    setHeight(ref.current.clientHeight)
-    props.onHeightChange(props.item.id,ref.current.clientHeight)
-  })
   return(
-    <a.div ref={ref} key={props.item.id} className="team-card" style={{ background: props.item.css, boxShadow:props.bs}}>
-      <img></img>
-      <h3> Test Name </h3>
-      <p>{props.item.id}</p>
+    <a.div className="team-card" style={{boxShadow:props.boxShadow}}>
+      <img src="/img/testImageSmall.png"></img>
+      <h3> Jonas Kopka </h3>
       <p> {desc} </p>
-      <p>{height}</p>
       <div className="team-quote" style={{background:'green'}}></div>
       <div className="team-text" style={{background:'orange'}}></div>
       <div className="team-tags" style={{background:'gray'}}></div>
@@ -81,24 +72,20 @@ function TeamGrid() {
     }
     setItems(res)
   }
-  function updateHeight(id, height){
-    let changedHeight = data
-    changedHeight[id].height=height + 30
-    setData(changedHeight)
-  }
   let heights = new Array(columns).fill(0) // Each column gets a height starting with zero
   let gridItems = items.map((child, i) => {
     const column = heights.indexOf(Math.min(...heights)) // Basic masonry-grid placing, puts tile into the smallest column using Math.min
-    const xy = [(width / columns) * column, (heights[column] += child.height) - child.height] // X = container width / number of columns * column index, Y = it's just the height of the current column
+    const xy = [(width / columns) * column, (heights[column] += child.height) - child.height ] // X = container width / number of columns * column index, Y = it's just the height of the current column
     return { ...child, xy, width: width / columns, height: child.height}
   })
   // This turns gridItems into transitions, any addition, removal or change will be animated
+  //box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   const transitions = useTransition(gridItems, item => item.id, {
     from: ({ xy, width, height }) => ({ xy, width, height, opacity: 0, boxShadow:'0 0px 0px rgba(0,0,0,0), 0 0px 0px rgba(0,0,0,0)'}),
-    enter: ({ xy, width, height }) => ({ xy, width, height, opacity: 1, boxShadow: '0 23px 41px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)'}),
+    enter: ({ xy, width, height }) => ({ xy, width, height, opacity: 1, boxShadow: '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)'}),
     update: ({ xy, width, height }) => ({ xy, width, height }),
-    leave: { height: 0, opacity: 0 ,boxShadow:'0 0px 0px rgba(0,0,0,0), 0 0px 0px rgba(0,0,0,0)'},
-    config: { mass: 1, tension: 600, friction: 100 },
+    leave: { opacity:0, boxShadow:'0 0px 0px rgba(0,0,0,0), 0 0px 0px rgba(0,0,0,0)'},
+    config: { mass: 1, tension: 700, friction: 100 },
     trail: 0
   })
   return (
@@ -108,7 +95,7 @@ function TeamGrid() {
       <ToggleButton name="insilico" onToggle={selectItems}/>
       {transitions.map(({ item, props: { xy,boxShadow,...rest }, key }) => (
         <a.div key={key} style={{ transform: xy.interpolate((x, y) => `translate3d(${x}px,${y}px,0)`), ...rest}}>
-          <Card item={item} bs={boxShadow} onHeightChange={updateHeight}/>
+          <Card item={item} boxShadow={boxShadow}/>
         </a.div>
       ))}
     </div>
