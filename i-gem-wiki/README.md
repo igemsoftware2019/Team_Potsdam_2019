@@ -31,3 +31,8 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+##Image
+	
+###Compresison
+apt get install imagemagick
+convert -sampling-factor 4:2:0 -strip -quality 85 -interlace JPEG -colorspace RGB *.jpg *_compressed.jpg

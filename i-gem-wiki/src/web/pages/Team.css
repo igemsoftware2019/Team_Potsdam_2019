@@ -1,3 +1,26 @@
+
+.quote {
+  position: relative;
+  font-size: 40px;
+  line-height: 40px;
+  color: #0b7faf;
+  padding: 10px 0 0 30px;
+  font-style: italic;
+  font-weight: 500;
+  z-index: 1;
+}
+.quote:before {
+  content: '\201C';
+  font-family: 'Sanchez', serif;
+  position: absolute;
+  top: 0.25em;
+  color: #bababa;
+  font-size: 150px;
+  z-index: -1;
+  margin: 0 0 0 -60px;
+  
+}
+
 .butn {
   -webkit-border-radius: 28;
   -moz-border-radius: 28;
@@ -11,7 +34,7 @@
   padding: 10px 20px 10px 20px;
   margin: 10px;
   text-decoration: none;
-  
+  display: inline-block;
   -webkit-transition: all 150ms linear;
   -ms-transition: all 150ms linear;
   transition: all 150ms linear;
@@ -51,9 +74,12 @@
 .team-card{
   position: relative;
   width: 100%;
-  height: 100%;
   margin: 15px;
+  background: white;
   overflow: hidden;
+  z-index: -2;
+  border-bottom: solid #2bc258 7px;
+  border-radius: 5px;
 }
 .team-card:hover{
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)!important;
@@ -67,12 +93,13 @@
   float: right;
   opacity: inherit;
   border-radius: 0 0 0 50%; 
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
 }
 
 .team-card h3{
   opacity: inherit;
+  font-size: 35px;
   padding: 15px 0;
   font-weight: bold;
   margin: 2px 0 0 0;
@@ -81,9 +108,24 @@
   opacity: inherit;
   margin-left: 15px;
   display: block;
-  margin: 2px 0 0 0;
+  font-size: 24px;
+  margin: 2px 0 5px 0;
 }
 
+.team-tag{
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-size: 14px;
+  font-weight: bold;
+  border: solid #2bc258 2px;
+  padding: 5px 10px 5px 10px;
+  margin: 5px;
+  text-decoration: none;
+  color: #ffffff;
+  display: inline-block;
+  background: #2bc258;
+}
 .Team{	
 	width: 100%;
 	height: 100%;

@@ -17,7 +17,7 @@ export default class CustomScrollbar extends Component {
     renderView({ style, ...props }) {
       //const { top } = this.state;
       const viewStyle = {
-          paddingRight: 15,
+          paddingRight: 25,
       };
       return (
           <div
