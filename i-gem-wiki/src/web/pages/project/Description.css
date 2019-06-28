@@ -1,0 +1,6 @@
+.description{
+  text-align: left;
+  justify-content: left;
+  margin: 8vmin;
+  font-size: calc(10px + 1.2vmin);
+}

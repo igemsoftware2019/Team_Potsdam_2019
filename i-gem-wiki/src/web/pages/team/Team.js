@@ -137,7 +137,7 @@ function TeamGrid() {
 class Team extends Component {
   render() {
     return (
-      <div className="Team">
+      <div className="page">
         <CustomScrollbar>
           <h1>Team Members</h1>
           <TeamGrid/>

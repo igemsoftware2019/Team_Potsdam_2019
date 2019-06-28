@@ -1,0 +1,6 @@
+TODO:
+	FIX IGEM CSS
+		Header overlapping
+		too much white space on top of page
+		h1 has underline
+		Judging form arrow is wrong char

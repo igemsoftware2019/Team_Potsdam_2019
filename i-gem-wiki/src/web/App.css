@@ -11,3 +11,13 @@ body{
   margin-top: 56px;
   overflow: hidden;
 }
+h1{
+  margin: 2rem 0 2rem 0;
+  font-size: calc(10px + 3.4vmin);
+  font-weight: bold;
+}
+.page{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
