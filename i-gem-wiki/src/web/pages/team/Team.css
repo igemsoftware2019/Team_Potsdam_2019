@@ -13,11 +13,12 @@
   content: '\201C';
   font-family: 'Sanchez', serif;
   position: absolute;
-  top: 0.25em;
-  color: #bababa;
-  font-size: 150px;
+  top: 20px;
+  color: #cacaca;
+  font-size: 110px;
   z-index: -1;
-  margin: 0 0 0 -60px;
+  margin: 0 0 0 -30px;
+  font-weight: bold;
   
 }
 

@@ -35,21 +35,118 @@ export default class IgemNavbar extends React.Component {
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
+            <NavItem>
+              <NavLink className="nav-link" to="/"> Home </NavLink>
+            </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
                 Team
               </DropdownToggle>
               <DropdownMenu className="bg-dark" right>
                 <DropdownItem>
-                  <NavLink className="nav-link" to="/Team/">Team Members</NavLink>
+                  <NavLink className="nav-link" to="/Team">Team Members</NavLink>
                 </DropdownItem>
                 <DropdownItem>
-                  <NavLink className="nav-link" to="/Collaborations/">Collaborations</NavLink>
+                  <NavLink className="nav-link" to="/Collaborations">Collaborations</NavLink>
+                </DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
+            <UncontrolledDropdown nav inNavbar>
+              <DropdownToggle nav caret>
+                Project
+              </DropdownToggle>
+              <DropdownMenu className="bg-dark" right>
+                <DropdownItem>
+                  <NavLink className="nav-link" to="/Description"> Description </NavLink>
+                </DropdownItem>
+                <DropdownItem>
+                  <NavLink className="nav-link" to="/Design"> Design </NavLink>
+                </DropdownItem>
+                <DropdownItem>
+                  <NavLink className="nav-link" to="/Experiments"> Experiments </NavLink>
+                </DropdownItem>
+                <DropdownItem>
+                  <NavLink className="nav-link" to="/Notebook"> Notebook </NavLink>
+                </DropdownItem>
+                <DropdownItem>
+                  <NavLink className="nav-link" to="/Contribution"> Contribution </NavLink>
+                </DropdownItem>
+                <DropdownItem>
+                  <NavLink className="nav-link" to="/Results"> Results </NavLink>
+                </DropdownItem>
+                <DropdownItem>
+                  <NavLink className="nav-link" to="/Demonstrate"> Demonstrate </NavLink>
+                </DropdownItem>
+                <DropdownItem>
+                  <NavLink className="nav-link" to="/Improve"> Improve </NavLink>
+                </DropdownItem>
+                <DropdownItem>
+                  <NavLink className="nav-link" to="/Attributions"> Attributions </NavLink>
+                </DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
+            <UncontrolledDropdown nav inNavbar>
+              <DropdownToggle nav caret>
+                Parts
+              </DropdownToggle>
+              <DropdownMenu className="bg-dark" right>
+                <DropdownItem>
+                  <NavLink className="nav-link" to="/Parts"> Parts Overview </NavLink>
+                </DropdownItem>
+                <DropdownItem>
+                  <NavLink className="nav-link" to="/Basic_Part"> Basic Parts </NavLink>
+                </DropdownItem>
+                <DropdownItem>
+                  <NavLink className="nav-link" to="/Composite_Part"> Composite Parts </NavLink>
+                </DropdownItem>
+                <DropdownItem>
+                  <NavLink className="nav-link" to="/Part_Collection"> Part Collection </NavLink>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
             <NavItem>
-              <NavLink className="nav-link" to="/Safety/">Safety</NavLink>
+              <NavLink className="nav-link" to="/Safety">Safety</NavLink>
+            </NavItem>
+            <UncontrolledDropdown nav inNavbar>
+              <DropdownToggle nav caret>
+                Human Practices
+              </DropdownToggle>
+              <DropdownMenu className="bg-dark" right>
+                <DropdownItem>
+                  <NavLink className="nav-link" to="/Human_Practices"> Human Practices </NavLink>
+                </DropdownItem>
+                <DropdownItem>
+                  <NavLink className="nav-link" to="/Public_Engagement"> Education & Engagement </NavLink>
+                </DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
+            <UncontrolledDropdown nav inNavbar>
+              <DropdownToggle nav caret>
+                Awards
+              </DropdownToggle>
+              <DropdownMenu className="bg-dark" right>
+                <DropdownItem>
+                  <NavLink className="nav-link" to="/Entrepreneurship"> Entrepreneurship </NavLink>
+                </DropdownItem>
+                <DropdownItem>
+                  <NavLink className="nav-link" to="/Hardware"> Hardware </NavLink>
+                </DropdownItem>
+                <DropdownItem>
+                  <NavLink className="nav-link" to="/Measurement"> Measurement </NavLink>
+                </DropdownItem>
+                <DropdownItem>
+                  <NavLink className="nav-link" to="/Model"> Model </NavLink>
+                </DropdownItem>
+                <DropdownItem>
+                  <NavLink className="nav-link" to="/Plant"> Plant </NavLink>
+                </DropdownItem>
+                <DropdownItem>
+                  <NavLink className="nav-link" to="/Software"> Software </NavLink>
+                </DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
+            <NavItem>
+              <a className="nav-link" href="https://igem.org/2019_Judging_Form?team=Potsdam">Judging Form ⇗</a>
             </NavItem>
           </Nav>
         </Collapse>

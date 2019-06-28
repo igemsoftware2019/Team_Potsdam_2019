@@ -11,7 +11,9 @@ export default [
   {
     image: '/wiki/images/f/f7/T--Potsdam--jonas_medium.jpg',
     name: 'Jonas Kopka',
-    tags:['web','insilico'],
+    quote: 'An individual quote from you',
+    text: 'I text what you do/did in the project',
+    tags:['web','insilico','lead','human practice'],
     height:0
   },
   {

@@ -1,14 +1,12 @@
 import React, { Component } from "react";
  
-class Home extends Component {
+class Improve extends Component {
   render() {
     return (
       <div>
-        <h1>Project</h1>
-        <p>Under construction</p>
       </div>
     );
   }
 }
  
-export default Home;
+export default Improve;

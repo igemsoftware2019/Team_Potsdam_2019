@@ -11,16 +11,16 @@ Project (None)
 	Demonstrate
 	Improve
 	Attributions
-PARTS (None)
+Parts (None)
 	Parts Overview (/Parts)
 	Basic Parts (/Basic_Part)
 	Composite Parts (/Composite_Part)
 	Part Collection (/Part_Collection)
-SAFETY (/Safety)
-HUMAN PRACTICES (None)
+Safety (/Safety)
+Human practices (None)
 	Human Practices (/Human_Practices)
 	Education & Engagement (/Public_Engagement)
-AWARDS (None)
+Awards (None)
 	Entrepreneurship
 	Hardware
 	Measurement
