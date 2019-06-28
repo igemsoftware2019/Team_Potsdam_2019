@@ -87,7 +87,6 @@ function TeamGrid() {
           res.push(data[i])
         }
       }
-      console.log("update")
       setItems(res)  
     }
   }
@@ -96,7 +95,7 @@ function TeamGrid() {
     data[id].height = height + 30
     setData(data)
     setChangedHeight(true)
-    setTimeout(()=> updateItems(tags,false),800)
+    setTimeout(()=> updateItems(tags,false),1000)
   }
   function hasTags(itemTags){
     return tags.every( val => itemTags.includes(val));

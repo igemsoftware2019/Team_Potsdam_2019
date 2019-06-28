@@ -1,7 +1,8 @@
 # production
 /build
 /dist/build
-
+/public/img
+/public/wiki
 # Logs
 logs
 *.log
