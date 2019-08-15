@@ -5,28 +5,40 @@ from uuid import uuid4
 
 class Protein():
     def __init__(self, original_sequence, number_of_mutations, mutations=[],
-                 max_protein_length=650, min_protein_length=50):
+                 max_protein_length=650, min_protein_length=50, 
+                 natural_mutations=None):
         self.original_seq = original_sequence
         self.number_of_mutations = number_of_mutations
         self.mutations = mutations
+        self.natural_mutations = natural_mutations
         self.max_protein_length = max_protein_length
         self.min_protein_length = min_protein_length
         self.temperature = None
         self.structural_stability = None
         self.survival_chance = None
-    '''
-    We don't do the following mutation types: Duplication, Inversion,
-    Translocation, because they change too many AAs at once.
-    '''
+
     def mutate(self):
         '''
-        Makes no or a random replace/delete/insert mutation. If there
-        are too many mutations it removes a mutation.
+        If thereare too many mutations it removes a random mutation.
         '''
         if len(self.mutations) >= self.number_of_mutations:
             # Maybe remove worst mutation instead of random
             i = floor(random() * len(self.mutations))
             self.mutations = self.mutations[:i] + self.mutations[i+1:]
+        mutation = self.natural_mutation()
+        self.mutations.append(mutation)
+
+    def natural_mutation(self):
+        return random.choice(self.natural_mutations)
+
+    '''
+    We don't do the following mutation types: Duplication, Inversion,
+    Translocation, because they change too many AAs at once.
+    '''
+    def random_mutation(self):
+        '''
+        Makes no or a random replace/delete/insert mutation.
+        '''
         # TODO check if correct amino acids
         amino_acids = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L',
                        'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y']
@@ -66,9 +78,9 @@ class Protein():
             'position': mutation_pos,
             'original_aa': self.original_seq[orig_pos],
             'new_aa': new_aa,
-            'uuid': int(uuid4()),
+            'insert_order': int(uuid4()),
         }
-        self.mutations.append(mutation)
+        return mutation
 
     def cross_over(self, other):
         # Maybe choose five best mutations instead of random
@@ -93,7 +105,8 @@ class Protein():
 
         Insert mutations are applied last by keeping track of how many
         insertions happend before to insert at the correct position,
-        additionally they have a uuid to have a consistent position
+        additionally they have a insert_order/uuid to have a consistent
+        position
         '''
         mutated_seq = self.original_seq
         all_inserts = []
@@ -114,7 +127,7 @@ class Protein():
                 all_inserts.append(m)
 
         if len(all_inserts) > 1:
-            # Sort all inserts by position and uuid
+            # Sort all inserts by position and insert_order
             for i in range(len(all_inserts)):
                 smallest_pos = i
                 for j in range(i, len(all_inserts)):
@@ -123,7 +136,7 @@ class Protein():
                     if m['position'] < smallest['position']:
                         smallest_pos = j
                     elif (m['position'] == smallest['position'] and
-                          m['uuid'] < smallest['uuid']):
+                          m['insert_order'] < smallest['insert_order']):
                         smallest_pos = j
                 smallest = all_inserts[smallest_pos]
                 # Swap
