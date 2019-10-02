@@ -2,3 +2,6 @@
 *.sublime-workspace
 *.sublime-project
 notes.txt
+
+#IGEM
+code/sequence_mutation/blast_data/

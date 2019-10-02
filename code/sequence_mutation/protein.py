@@ -1,16 +1,25 @@
-from random import random
+import random
 from math import floor
 from uuid import uuid4
 
+from ensemble import predict_temperature
+
+random.seed(12345)
+
 
 class Protein():
-    def __init__(self, original_sequence, number_of_mutations, mutations=[],
-                 max_protein_length=650, min_protein_length=50, 
-                 natural_mutations=None):
+    def __init__(self, original_sequence, number_of_mutations, mutations=None,
+                 max_protein_length=650, min_protein_length=50,
+                 natural_mutations=None, active_centers=None):
         self.original_seq = original_sequence
         self.number_of_mutations = number_of_mutations
-        self.mutations = mutations
+        self.mutations = mutations or []
         self.natural_mutations = natural_mutations
+        self.active_centers = active_centers
+        self.dont_mutate = []
+        if self.active_centers:
+            for c in active_centers:
+                self.dont_mutate = self.dont_mutate + list(range(c[0], c[1]))
         self.max_protein_length = max_protein_length
         self.min_protein_length = min_protein_length
         self.temperature = None
@@ -19,14 +28,15 @@ class Protein():
 
     def mutate(self):
         '''
-        If thereare too many mutations it removes a random mutation.
+        If there are too many mutations it removes a random mutation.
         '''
         if len(self.mutations) >= self.number_of_mutations:
             # Maybe remove worst mutation instead of random
-            i = floor(random() * len(self.mutations))
+            i = floor(random.random() * len(self.mutations))
             self.mutations = self.mutations[:i] + self.mutations[i+1:]
         mutation = self.natural_mutation()
-        self.mutations.append(mutation)
+        if not mutation['position'] in self.dont_mutate:
+            self.mutations.append(mutation)
 
     def natural_mutation(self):
         return random.choice(self.natural_mutations)
@@ -42,7 +52,7 @@ class Protein():
         # TODO check if correct amino acids
         amino_acids = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L',
                        'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y']
-        random_type = random()
+        random_type = random.random()
         mutated_seq_len = len(self.sequence())
         if random_type < 0.66:
             mutation_type = 'replace'
@@ -59,17 +69,17 @@ class Protein():
             return
 
         if mutation_type == 'replace':
-            mutation_pos = floor(random() * len(self.original_seq))
+            mutation_pos = floor(random.random() * len(self.original_seq))
             # Remove original_ aa to ensure that it is not randomly the same aa
             amino_acids.pop(amino_acids.index(self.original_seq[mutation_pos]))
-            new_aa = amino_acids[floor(random()*19)]
+            new_aa = amino_acids[floor(random.random()*19)]
         elif mutation_type == 'delete':
-            mutation_pos = floor(random() * len(self.original_seq))
+            mutation_pos = floor(random.random() * len(self.original_seq))
             new_aa = ''
         elif mutation_type == 'insert':
             # +1 to allow mutations before and behind sequence
-            mutation_pos = floor(random() * (len(self.original_seq)+1))
-            new_aa = amino_acids[floor(random()*20)]
+            mutation_pos = floor(random.random() * (len(self.original_seq)+1))
+            new_aa = amino_acids[floor(random.random()*20)]
 
         orig_pos = (mutation_pos - 1 if mutation_pos == len(self.original_seq)
                     else mutation_pos)
@@ -84,15 +94,15 @@ class Protein():
 
     def cross_over(self, other):
         # Maybe choose five best mutations instead of random
-        cut_self = floor(random()*len(self.mutations))
-        cut_other = floor(random()*len(other.mutations))
+        cut_self = floor(random.random()*len(self.mutations))
+        cut_other = floor(random.random()*len(other.mutations))
         crossed_mutations = (self.mutations[:cut_self] +
                              other.mutations[cut_other:])
         # Remove too many mutations
-        while len(self.mutations) >= self.number_of_mutations:
+        while len(crossed_mutations) >= self.number_of_mutations:
             # Maybe remove worst mutation instead of random
-            i = floor(random() * len(self.mutations))
-            self.mutations = self.mutations[:i] + self.mutations[i+1:]
+            i = floor(random.random() * len(crossed_mutations))
+            crossed_mutations = crossed_mutations[:i] + crossed_mutations[i+1:]
         return Protein(self.original_seq, self.number_of_mutations,
                        mutations=crossed_mutations)
 
@@ -114,8 +124,9 @@ class Protein():
             # because insert canbe one larger than
             orig_pos = (m['position'] - 1 if m['position'] ==
                         len(self.original_seq) else m['position'])
-            if m['original_aa'] != self.original_seq[orig_pos]:
-                raise Exception("Trying to mutate the wrong position", str(m))
+            # does not work/apply for mutation across multiple sequences
+            # if m['original_aa'] != self.original_seq[orig_pos]:
+            # raise Exception("Trying to mutate the wrong position", str(m))
 
             if m['type'] == 'replace':
                 mutated_seq = (mutated_seq[:m['position']] + m['new_aa'] +
@@ -163,18 +174,19 @@ class Protein():
 
     def predict_temperature(self):
         # RUN BACDIVe model?
-        self.temperature = random() * 60
+        self.temperature = predict_temperature([self.sequence()])
         return self.temperature
 
     def predict_structure_stability(self):
         # RUN deepprotein model?
         # compare go output
         # or we try to rpedict centers first
-        self.structural_stability = random()
+        self.structural_stability = 0
         return self.structural_stability
 
     def __repr__(self):
         return ("Protein: " + str(self.temperature) + ", " +
                 str(self.structural_stability) + ", " +
                 str(self.survival_chance) + ", " +
-                str(self.mutations))
+                str(self.mutations) + ", " +
+                str(self.sequence()))
