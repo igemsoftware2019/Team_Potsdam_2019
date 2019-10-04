@@ -13,7 +13,7 @@ export default [
     name: 'Jonas Kopka',
     quote: 'An individual quote from you',
     text: 'A text about what you do/did in the project',
-    tags:['web','insilico','lead','human practice','invitro'],
+    tags:['web','insilico','human practice'],
     height:0
   },
   {

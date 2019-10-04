@@ -34,6 +34,9 @@ h1{
 .background-image img {
    width: 100%;
 }
+.page-header{
+  min-height: 100vw;
+}
 .page-header h1 {
   left: 0;
   position:absolute;
@@ -45,12 +48,15 @@ h1{
   font-size: 10vw;
   z-index: 2;
 }
+
 .main-content{
   background-color: white;
   min-height: 150%;
-  padding-right: 25px;
   z-index: 10;
   position: relative;
+}
+.box div{
+  margin-right: -28px;
 }
 
 .rotation{

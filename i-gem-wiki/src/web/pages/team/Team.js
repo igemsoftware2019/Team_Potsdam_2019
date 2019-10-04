@@ -142,12 +142,13 @@ function Team() {
         <a.div className="page-header" style={{ transform: interpScroll }}>
           <h1>Team Members</h1>
           <a.div className="background-image" style={{ transform: "transitionMouse" }}>
-            <img src="https://2019.igem.org/wiki/images/3/3a/T--Potsdam--group_picture.jpg" alt="Team"></img>
+            <img src="https://2019.igem.org/wiki/images/3/3a/T--Potsdam--group_picture.jpg"></img>
           </a.div>
         </a.div>
         <div className="main-content" style={{ marginTop: "-25%"}}>
-          
-          <TeamGrid/>
+          <div>
+            <TeamGrid/>
+          </div>
         </div>
       </CustomScrollbar>
     </div>

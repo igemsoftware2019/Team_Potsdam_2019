@@ -1,6 +1,7 @@
 .navbar{
 	background-color: #0b7faf;
   font-size: 1.5rem;
+  min-height: 102px;
   -webkit-box-shadow: 0px 0px 20px 10px rgba(0,0,0,0.5);
   -moz-box-shadow: 0px 0px 20px 10px rgba(0,0,0,0.5);
   box-shadow: 0px 0px 20px 10px rgba(0,0,0,0.5);
@@ -42,5 +43,10 @@
 }
 
 .nav-item{
-  padding: 0 0.5rem 0 0.5rem;
+  padding: 0 0.75rem 0 0.75rem;
+}
+@media (max-width: 1300px) {
+  .nav-item{
+    padding: 0;
+  }
 }
