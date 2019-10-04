@@ -13,6 +13,8 @@ import {
   NavLink
 } from 'react-router-dom'
 
+import './navbar.css';
+
 //<DropdownItem divider />
 export default class IgemNavbar extends React.Component {
   constructor(props) {
@@ -30,8 +32,11 @@ export default class IgemNavbar extends React.Component {
   }
   render() {
     return (
-      <Navbar fixed="top" color="dark" dark expand="md">
-        <NavLink className="navbar-brand" exact to="/">Thermal UP</NavLink>
+      <Navbar fixed="top" dark expand="xl">
+        <NavLink className="navbar-brand" exact to="/">
+          Thermal&nbsp;
+          <img className="navbar-logo" src="https://2019.igem.org/wiki/images/0/06/T--Potsdam--logo_white.png" alt=" UP"></img>
+        </NavLink>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
@@ -42,7 +47,7 @@ export default class IgemNavbar extends React.Component {
               <DropdownToggle nav caret>
                 Team
               </DropdownToggle>
-              <DropdownMenu className="bg-dark" right>
+              <DropdownMenu right>
                 <DropdownItem>
                   <NavLink className="nav-link" to="/Team">Team Members</NavLink>
                 </DropdownItem>
@@ -55,7 +60,7 @@ export default class IgemNavbar extends React.Component {
               <DropdownToggle nav caret>
                 Project
               </DropdownToggle>
-              <DropdownMenu className="bg-dark" right>
+              <DropdownMenu right>
                 <DropdownItem>
                   <NavLink className="nav-link" to="/Description"> Description </NavLink>
                 </DropdownItem>
@@ -89,7 +94,7 @@ export default class IgemNavbar extends React.Component {
               <DropdownToggle nav caret>
                 Parts
               </DropdownToggle>
-              <DropdownMenu className="bg-dark" right>
+              <DropdownMenu right>
                 <DropdownItem>
                   <NavLink className="nav-link" to="/Parts"> Parts Overview </NavLink>
                 </DropdownItem>
@@ -111,7 +116,7 @@ export default class IgemNavbar extends React.Component {
               <DropdownToggle nav caret>
                 Human Practices
               </DropdownToggle>
-              <DropdownMenu className="bg-dark" right>
+              <DropdownMenu right>
                 <DropdownItem>
                   <NavLink className="nav-link" to="/Human_Practices"> Human Practices </NavLink>
                 </DropdownItem>
@@ -124,7 +129,7 @@ export default class IgemNavbar extends React.Component {
               <DropdownToggle nav caret>
                 Awards
               </DropdownToggle>
-              <DropdownMenu className="bg-dark" right>
+              <DropdownMenu right>
                 <DropdownItem>
                   <NavLink className="nav-link" to="/Entrepreneurship"> Entrepreneurship </NavLink>
                 </DropdownItem>
@@ -146,7 +151,7 @@ export default class IgemNavbar extends React.Component {
               </DropdownMenu>
             </UncontrolledDropdown>
             <NavItem>
-              <a className="nav-link" href="https://igem.org/2019_Judging_Form?team=Potsdam">Judging Form ⇗</a>
+              <a className="nav-link" href="https://igem.org/2019_Judging_Form?team=Potsdam">Judging Form &#8663;</a>
             </NavItem>
           </Nav>
         </Collapse>

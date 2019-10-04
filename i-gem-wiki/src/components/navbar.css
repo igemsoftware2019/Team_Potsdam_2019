@@ -1,0 +1,46 @@
+.navbar{
+	background-color: #0b7faf;
+  font-size: 1.5rem;
+  -webkit-box-shadow: 0px 0px 20px 10px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0px 0px 20px 10px rgba(0,0,0,0.5);
+  box-shadow: 0px 0px 20px 10px rgba(0,0,0,0.5);
+}
+
+.navbar-brand{
+  color: white !important;
+  padding: 5px 10px 10px 20px;
+  font-size: 1.75rem; 
+}
+.navbar-brand:hover {
+  color: white !important;
+}
+
+.nav-link{
+  color: white !important;
+}
+.nav-link:hover {
+  color: white !important;
+}
+
+.dropdown-menu{
+  background-color: #0b7faf; 
+}
+.dropdown-item:focus, .dropdown-item:hover{
+  background-color: #3f9bc1; 
+}
+
+.navbar-logo{
+  width: 70px;  
+}
+
+.navbar-dark .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+.navbar-dark .navbar-toggler {
+    color: rgba(255,255,255,.5);
+    border-color: rgba(255,255,255,.5);
+}
+
+.nav-item{
+  padding: 0 0.5rem 0 0.5rem;
+}

@@ -1,5 +1,5 @@
-import React, { Component, useState, useRef} from 'react'
-import { useTransition, animated as a} from 'react-spring'
+import React, { useCallback, useState, useRef} from 'react'
+import { useSpring, useTransition, animated as a, interpolate} from 'react-spring'
 import CustomScrollbar from 'components/CustomScrollbar';
 import useMeasure from 'utils/useMeasure'
 import useMedia from 'utils/useMedia'
@@ -20,9 +20,6 @@ function ToggleButton(props) {
   )
 }
 function Card(props){
-  const loremIpsum = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam"
-  const [random] = useState(Math.random())
-  const desc = loremIpsum.substring(0,Math.floor(random * loremIpsum.length))
   const [height, setHeight] = useState(0)
   const ref = useRef(null)
   if(ref.current !== null){
@@ -40,8 +37,8 @@ function Card(props){
       {props.item.tags.map( (tag,key) => (
         <span key={key} className="team-tag noselect">{tag[0].toUpperCase() + tag.slice(1)}</span>
       ))}
-      <blockquote className="quote">This is a Quote.</blockquote>
-      <p> {desc} </p>
+      <blockquote className="quote">{props.item.quote}</blockquote>
+      <p> {props.item.text} </p>
       <div className="team-quote" style={{background:'green'}}></div>
       <div className="team-text" style={{background:'orange'}}></div>
     </a.div>
@@ -132,19 +129,29 @@ function TeamGrid() {
     </div>
   )
 }
+function Team() {
+  const [{ scroll, xy }, set] = useSpring(() => ({ scroll: 0, xy: [0, 0] }))
+  const interpScroll = interpolate([scroll,xy], (scroll,xy) => `translate(0px, ${scroll/4}px)`)
+  const transitionMouse = interpolate([scroll,xy], (scroll, xy) =>  `perspective(600px) rotateX(${xy[1]/400}deg) rotateY(${xy[0]/500}deg) scale(${1})`)
+  const onMove = useCallback(({ clientX: x, clientY: y }) => set({ xy: [x - window.innerWidth / 2, y - window.innerHeight / 2] }), [set])
+  const onScroll = useCallback(e => set({ scroll: (e.target.scrollTop) }), [set])
 
-
-class Team extends Component {
-  render() {
-    return (
-      <div className="page">
-        <CustomScrollbar>
+  return (
+    <div className="page" onMouseMove={onMove} onScroll={onScroll}>
+      <CustomScrollbar>
+        <a.div className="page-header" style={{ transform: interpScroll }}>
           <h1>Team Members</h1>
+          <a.div className="background-image" style={{ transform: "transitionMouse" }}>
+            <img src="https://2019.igem.org/wiki/images/3/3a/T--Potsdam--group_picture.jpg" alt="Team"></img>
+          </a.div>
+        </a.div>
+        <div className="main-content" style={{ marginTop: "-25%"}}>
+          
           <TeamGrid/>
-        </CustomScrollbar>
-      </div>
-    );
-  }
+        </div>
+      </CustomScrollbar>
+    </div>
+  );
 }
  
 export default Team;

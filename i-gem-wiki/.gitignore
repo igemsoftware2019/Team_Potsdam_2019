@@ -91,7 +91,3 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
-
-
-#IGEM
-code/sequence_mutation/blast_data
