@@ -1,6 +1,7 @@
 import React, { useCallback, useState, useRef} from 'react'
-import { useSpring, useTransition, animated as a, interpolate} from 'react-spring'
+import { useSpring, useTransition, animated as a} from 'react-spring'
 import CustomScrollbar from 'components/CustomScrollbar';
+import BackgroundImage from 'components/BackgroundImage';
 import useMeasure from 'utils/useMeasure'
 import useMedia from 'utils/useMedia'
 import teamData from 'data/teamData'
@@ -92,6 +93,7 @@ function TeamGrid() {
     data[id].height = height + 30
     setData(data)
     setChangedHeight(true)
+    clearTimeout()
     setTimeout(()=> updateItems(tags,false),1000)
   }
   function hasTags(itemTags){
@@ -131,24 +133,15 @@ function TeamGrid() {
 }
 function Team() {
   const [{ scroll, xy }, set] = useSpring(() => ({ scroll: 0, xy: [0, 0] }))
-  const interpScroll = interpolate([scroll,xy], (scroll,xy) => `translate(0px, ${scroll/4}px)`)
-  const transitionMouse = interpolate([scroll,xy], (scroll, xy) =>  `perspective(600px) rotateX(${xy[1]/400}deg) rotateY(${xy[0]/500}deg) scale(${1})`)
   const onMove = useCallback(({ clientX: x, clientY: y }) => set({ xy: [x - window.innerWidth / 2, y - window.innerHeight / 2] }), [set])
   const onScroll = useCallback(e => set({ scroll: (e.target.scrollTop) }), [set])
 
   return (
     <div className="page" onMouseMove={onMove} onScroll={onScroll}>
       <CustomScrollbar>
-        <a.div className="page-header" style={{ transform: interpScroll }}>
-          <h1>Team Members</h1>
-          <a.div className="background-image" style={{ transform: "transitionMouse" }}>
-            <img src="https://2019.igem.org/wiki/images/3/3a/T--Potsdam--group_picture.jpg"></img>
-          </a.div>
-        </a.div>
-        <div className="main-content" style={{ marginTop: "-25%"}}>
-          <div>
-            <TeamGrid/>
-          </div>
+        <BackgroundImage scroll={scroll} xy={xy} title="Team Members" src="https://2019.igem.org/wiki/images/3/3a/T--Potsdam--group_picture.jpg"/>
+        <div className="main-content">
+          <TeamGrid/>
         </div>
       </CustomScrollbar>
     </div>
