@@ -141,6 +141,24 @@ function Team() {
       <CustomScrollbar>
         <BackgroundImage scroll={scroll} xy={xy} title="Team Members" src="https://2019.igem.org/wiki/images/3/3a/T--Potsdam--group_picture.jpg"/>
         <div className="main-content">
+          <div className= "page-text">
+            <h1> It's all about teamwork - iGEM Potsdam 2019   </h1>
+
+            <p> <b> In Germany, there is the acronym - "TEAM: Toll Ein Anderer macht's" which means as much as "Great, there is another person
+            who can do this stuff, so, I don't care."</b></p>
+
+            <p>Finding team members and bringing them together as a team is one of the first milestones in the iGEM project.
+            In the beginning, we were several students of which most don't know each other, who should work together for several months.
+            Within the month we weren't just students with the same passion: TherMal.UP. We also became friends and created a great
+            working spirit which leads to helping hands whenever you face a problem. </p>
+
+            <p> If you want to know some more about our 20 student members from different study backgrounds such as Bioscience,
+            Computer Science and Informatics as well as about our team building activities, you will find some pictures and information
+            e.g. a quote from everyone on the next page.</p>
+
+            <p> We also got great support from our supervisors as Prof. Dr. Chianti, Prof. Dr. Wendler and her working group and the working group
+            from Dr. Bidan. </p>
+          </div>
           <TeamGrid/>
         </div>
       </CustomScrollbar>

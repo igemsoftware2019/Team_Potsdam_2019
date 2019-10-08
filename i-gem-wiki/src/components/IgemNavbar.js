@@ -34,7 +34,7 @@ export default class IgemNavbar extends React.Component {
     return (
       <Navbar fixed="top" dark expand="xl">
         <NavLink className="navbar-brand" exact to="/">
-          Thermal&nbsp;
+          Thermal
           <img className="navbar-logo" src="https://2019.igem.org/wiki/images/0/06/T--Potsdam--logo_white.png" alt=" UP"></img>
         </NavLink>
         <NavbarToggler onClick={this.toggle} />
@@ -151,7 +151,7 @@ export default class IgemNavbar extends React.Component {
               </DropdownMenu>
             </UncontrolledDropdown>
             <NavItem>
-              <a className="nav-link" href="https://igem.org/2019_Judging_Form?team=Potsdam">Judging Form &#8663;</a>
+              <a className="nav-link" href="https://igem.org/2019_Judging_Form?team=Potsdam">Judging Form</a>
             </NavItem>
           </Nav>
         </Collapse>

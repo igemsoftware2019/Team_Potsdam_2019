@@ -27,13 +27,13 @@ export default [
   {
     image: 'https://2019.igem.org/wiki/images/3/34/T--Potsdam--member_6.jpg',
     name: 'Bryan Nowack',
-    quote: 'To know your enemy, you must become your enemy – Sun Tzu, The Art of War (he’s talking about lab work)',
+    quote: 'To know your enemy, you must become your enemy - Sun Tzu, The Art of War (he\'s talking about lab work)',
     text: 'Not sure why but I decided to go for another year after 2017. Definitely some masochistic tendencies but that’s iGEM for you, I guess. At least the teammates suffer with you ;)',
     tags: ['invitro','lead'],
     height:0
   },
   {
-    image: '',
+    image: 'https://2019.igem.org/wiki/images/f/fe/T--Potsdam--member_11.jpg',
     name: 'Ricarda Leisering',
     quote: 'The very nature of science is discoveries, and the best of those discoveries are the ones you don\'t expect.-Neil deGrasse Tyson',
     text: 'I\'m an \'in vitro\' Team member and helped with the project design',
@@ -42,10 +42,10 @@ export default [
   },
   {
     image: '',
-    name: 'No one',
-    quote: '',
-    text: '',
-    tags:['web','insilico','lead','human practice','invitro'],
+    name: 'Christian Min Hansch',
+    quote: 'Work smart, not hard. - Dr. House',
+    text: 'Making the video with all of you was the most fun part!',
+    tags:['insilico'],
     height:0
   },
   {

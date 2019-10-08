@@ -35,6 +35,13 @@ h1{
 .main-content > div{
   margin-right: 28px;
 }
+.page-text{
+  text-align: left;
+  justify-content: left;
+  margin: 8vmin;
+  font-size: calc(10px + 1.2vmin);
+  padding-top: 20px;
+}
 
 .rotation{
   -webkit-animation:spin 8s linear infinite;
