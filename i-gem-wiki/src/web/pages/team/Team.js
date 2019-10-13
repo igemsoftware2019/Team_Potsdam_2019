@@ -1,6 +1,7 @@
-import React, { Component, useState, useRef} from 'react'
-import { useTransition, animated as a} from 'react-spring'
+import React, { useCallback, useState, useRef} from 'react'
+import { useSpring, useTransition, animated as a} from 'react-spring'
 import CustomScrollbar from 'components/CustomScrollbar';
+import BackgroundImage from 'components/BackgroundImage';
 import useMeasure from 'utils/useMeasure'
 import useMedia from 'utils/useMedia'
 import teamData from 'data/teamData'
@@ -20,9 +21,6 @@ function ToggleButton(props) {
   )
 }
 function Card(props){
-  const loremIpsum = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam"
-  const [random] = useState(Math.random())
-  const desc = loremIpsum.substring(0,Math.floor(random * loremIpsum.length))
   const [height, setHeight] = useState(0)
   const ref = useRef(null)
   if(ref.current !== null){
@@ -40,8 +38,8 @@ function Card(props){
       {props.item.tags.map( (tag,key) => (
         <span key={key} className="team-tag noselect">{tag[0].toUpperCase() + tag.slice(1)}</span>
       ))}
-      <blockquote className="quote">This is a Quote.</blockquote>
-      <p> {desc} </p>
+      <blockquote className="quote">{props.item.quote}</blockquote>
+      <p> {props.item.text} </p>
       <div className="team-quote" style={{background:'green'}}></div>
       <div className="team-text" style={{background:'orange'}}></div>
     </a.div>
@@ -95,6 +93,7 @@ function TeamGrid() {
     data[id].height = height + 30
     setData(data)
     setChangedHeight(true)
+    clearTimeout()
     setTimeout(()=> updateItems(tags,false),1000)
   }
   function hasTags(itemTags){
@@ -132,19 +131,39 @@ function TeamGrid() {
     </div>
   )
 }
+function Team() {
+  const [{ scroll, xy }, set] = useSpring(() => ({ scroll: 0, xy: [0, 0] }))
+  const onMove = useCallback(({ clientX: x, clientY: y }) => set({ xy: [x - window.innerWidth / 2, y - window.innerHeight / 2] }), [set])
+  const onScroll = useCallback(e => set({ scroll: (e.target.scrollTop) }), [set])
 
+  return (
+    <div className="page" onMouseMove={onMove} onScroll={onScroll}>
+      <CustomScrollbar>
+        <BackgroundImage scroll={scroll} xy={xy} title="Team Members" src="https://2019.igem.org/wiki/images/3/3a/T--Potsdam--group_picture.jpg"/>
+        <div className="main-content">
+          <div className= "page-text">
+            <h1> It's all about teamwork - iGEM Potsdam 2019   </h1>
 
-class Team extends Component {
-  render() {
-    return (
-      <div className="page">
-        <CustomScrollbar>
-          <h1>Team Members</h1>
+            <p> <b> In Germany, there is the acronym - "TEAM: Toll Ein Anderer macht's" which means as much as "Great, there is another person
+            who can do this stuff, so, I don't care."</b></p>
+
+            <p>Finding team members and bringing them together as a team is one of the first milestones in the iGEM project.
+            In the beginning, we were several students of which most don't know each other, who should work together for several months.
+            Within the month we weren't just students with the same passion: TherMal.UP. We also became friends and created a great
+            working spirit which leads to helping hands whenever you face a problem. </p>
+
+            <p> If you want to know some more about our 20 student members from different study backgrounds such as Bioscience,
+            Computer Science and Informatics as well as about our team building activities, you will find some pictures and information
+            e.g. a quote from everyone on the next page.</p>
+
+            <p> We also got great support from our supervisors as Prof. Dr. Chianti, Prof. Dr. Wendler and her working group and the working group
+            from Dr. Bidan. </p>
+          </div>
           <TeamGrid/>
-        </CustomScrollbar>
-      </div>
-    );
-  }
+        </div>
+      </CustomScrollbar>
+    </div>
+  );
 }
  
 export default Team;

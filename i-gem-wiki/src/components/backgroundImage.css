@@ -1,0 +1,23 @@
+.background-image{
+  width: 120%;
+  margin: -5% 0 0 -10%;
+  position: relative;
+  z-index: 1;
+}
+.background-image img {
+   width: 100%;
+}
+.page-header{
+  min-height: 100vw;
+}
+.page-header h1 {
+  left: 0;
+  position:absolute;
+  text-align:center;
+  top: 20vw;
+  width: 100%;
+  color: #ae2d1e;
+  font-weight: bold;
+  font-size: 10vw;
+  z-index: 2;
+}

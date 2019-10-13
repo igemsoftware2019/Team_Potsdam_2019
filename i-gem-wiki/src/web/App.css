@@ -1,14 +1,17 @@
+html {
+  scroll-behavior: smooth;
+}
 body{
   overflow: hidden;
 }
-.content {
+.app-container {
   text-align: center;
   height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  margin-top: 56px;
+  margin-top: 75px;
   overflow: hidden;
 }
 h1{
@@ -16,8 +19,35 @@ h1{
   font-size: calc(10px + 3.4vmin);
   font-weight: bold;
 }
-.page{
+.page {
   width: 100%;
   height: 100%;
   position: absolute;
 }
+
+.main-content{
+  background-color: white;
+  min-height: 150%;
+  z-index: 10;
+  margin-top: -25%;
+  position: relative;
+}
+.main-content > div{
+  margin-right: 28px;
+}
+.page-text{
+  text-align: left;
+  justify-content: left;
+  margin: 8vmin;
+  font-size: calc(10px + 1.2vmin);
+  padding-top: 20px;
+}
+
+.rotation{
+  -webkit-animation:spin 8s linear infinite;
+  -moz-animation:spin 8s linear infinite;
+  animation:spin 8s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }

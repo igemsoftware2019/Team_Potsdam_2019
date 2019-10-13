@@ -44,7 +44,7 @@ class App extends Component {
     return (
       <BrowserRouter basename="/Team:Potsdam">
         <IgemNavbar></IgemNavbar>
-        <div className="content">
+        <div className="app-container">
           <Route exact path="/" component={Home}/>
           
           <Route path="/Team" component={Team}/>

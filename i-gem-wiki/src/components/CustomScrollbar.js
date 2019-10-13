@@ -17,7 +17,7 @@ export default class CustomScrollbar extends Component {
     renderView({ style, ...props }) {
       //const { top } = this.state;
       const viewStyle = {
-          paddingRight: 25,
+          paddingRight: 0,
       };
       return (
           <div
@@ -42,7 +42,9 @@ export default class CustomScrollbar extends Component {
             right: 5,
             bottom: 5,
             top: 5,
-            borderRadius: 5
+            borderRadius: 5,
+            position: "absolute",
+            zIndex: 1030
         };
         return (
             <div style={{ ...style, ...trackStyle }} {...props}/>
