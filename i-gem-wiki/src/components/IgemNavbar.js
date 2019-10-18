@@ -90,63 +90,19 @@ export default class IgemNavbar extends React.Component {
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Parts
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>
-                  <NavLink className="nav-link" to="/Parts"> Parts Overview </NavLink>
-                </DropdownItem>
-                <DropdownItem>
-                  <NavLink className="nav-link" to="/Basic_Part"> Basic Parts </NavLink>
-                </DropdownItem>
-                <DropdownItem>
-                  <NavLink className="nav-link" to="/Composite_Part"> Composite Parts </NavLink>
-                </DropdownItem>
-                <DropdownItem>
-                  <NavLink className="nav-link" to="/Part_Collection"> Part Collection </NavLink>
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
             <NavItem>
               <NavLink className="nav-link" to="/Safety">Safety</NavLink>
             </NavItem>
+            <NavItem>
+              <NavLink className="nav-link" to="/Human_Practices">Human Practices</NavLink>
+            </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
-                Human Practices
+                Award
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem>
-                  <NavLink className="nav-link" to="/Human_Practices"> Human Practices </NavLink>
-                </DropdownItem>
-                <DropdownItem>
-                  <NavLink className="nav-link" to="/Public_Engagement"> Education & Engagement </NavLink>
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Awards
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>
-                  <NavLink className="nav-link" to="/Entrepreneurship"> Entrepreneurship </NavLink>
-                </DropdownItem>
-                <DropdownItem>
-                  <NavLink className="nav-link" to="/Hardware"> Hardware </NavLink>
-                </DropdownItem>
-                <DropdownItem>
-                  <NavLink className="nav-link" to="/Measurement"> Measurement </NavLink>
-                </DropdownItem>
                 <DropdownItem>
                   <NavLink className="nav-link" to="/Model"> Model </NavLink>
-                </DropdownItem>
-                <DropdownItem>
-                  <NavLink className="nav-link" to="/Plant"> Plant </NavLink>
-                </DropdownItem>
-                <DropdownItem>
-                  <NavLink className="nav-link" to="/Software"> Software </NavLink>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
