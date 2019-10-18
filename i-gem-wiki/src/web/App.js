@@ -22,22 +22,11 @@ import Demonstrate from "./pages/project/Demonstrate";
 import Improve from "./pages/project/Improve";
 import Attributions from "./pages/project/Attributions";
 
-import PartsOverview from "./pages/parts/PartsOverview";
-import BasicParts from "./pages/parts/BasicParts";
-import CompositeParts from "./pages/parts/CompositeParts";
-import PartCollection from "./pages/parts/PartCollection";
-
 import Safety from "./pages/Safety";
 
 import HumanPractices from "./pages/human_practice/HumanPractices";
-import EducationAndEngagement from "./pages/human_practice/EducationAndEngagement";
 
-import Entrepreneurship from "./pages/awards/Entrepreneurship";
-import Hardware from "./pages/awards/Hardware";
-import Measurement from "./pages/awards/Measurement";
 import Model from "./pages/awards/Model";
-import Plant from "./pages/awards/Plant";
-import Software from "./pages/awards/Software";
 
 class App extends Component {
   render() {
@@ -60,22 +49,11 @@ class App extends Component {
           <Route path="/Improve" component={Improve}/>
           <Route path="/Attributions" component={Attributions}/>
 
-          <Route path="/Parts" component={PartsOverview}/>
-          <Route path="/Basic_Part" component={BasicParts}/>
-          <Route path="/Composite_Part" component={CompositeParts}/>
-          <Route path="/Part_Collection" component={PartCollection}/>
-
           <Route path="/Safety" component={Safety}/>
 
           <Route path="/Human_Practices" component={HumanPractices}/>
-          <Route path="/Public_Engagement" component={EducationAndEngagement}/>
 
-          <Route path="/Entrepreneurship" component={Entrepreneurship}/>
-          <Route path="/Hardware" component={Hardware}/>
-          <Route path="/Measurement" component={Measurement}/>
           <Route path="/Model" component={Model}/>
-          <Route path="/Plant" component={Plant}/>
-          <Route path="/Software" component={Software}/>
         </div>
       </BrowserRouter>
     );

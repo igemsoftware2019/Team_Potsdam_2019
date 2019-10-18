@@ -2,6 +2,7 @@ import React, { useCallback, useState, useRef} from 'react'
 import { useSpring, useTransition, animated as a} from 'react-spring'
 import CustomScrollbar from 'components/CustomScrollbar';
 import BackgroundImage from 'components/BackgroundImage';
+import Sponsors from "components/Sponsors";
 import useMeasure from 'utils/useMeasure'
 import useMedia from 'utils/useMedia'
 import teamData from 'data/teamData'
@@ -118,11 +119,11 @@ function TeamGrid() {
   })
   return (
     <div {...bind} className="list" style={{ height: Math.max(...heights) }}>
-      <ToggleButton name="web" onToggle={selectItems}/>
       <ToggleButton name="invitro" onToggle={selectItems}/>
       <ToggleButton name="insilico" onToggle={selectItems}/>
       <ToggleButton name="lead" onToggle={selectItems}/>
       <ToggleButton name="human practice" onToggle={selectItems}/>
+      <ToggleButton name="web" onToggle={selectItems}/>
       {transitions.map(({ item, props: { xy,boxShadow,...rest }, key }) => (
         <a.div key={key} style={{ transform: xy.interpolate((x, y) => `translate3d(${x}px,${y}px,0)`), ...rest}}>
           <Card item={item} boxShadow={boxShadow} onHeightChange={updateHeight}/>
@@ -161,6 +162,7 @@ function Team() {
           </div>
           <TeamGrid/>
         </div>
+        <Sponsors/>
       </CustomScrollbar>
     </div>
   );

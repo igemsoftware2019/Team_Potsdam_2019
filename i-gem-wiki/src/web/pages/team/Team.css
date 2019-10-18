@@ -26,12 +26,12 @@
   -webkit-border-radius: 28;
   -moz-border-radius: 28;
   border-radius: 28px;
-  color: #2bc258;
+  color: #218a41;
   cursor: pointer;
   font-size: 20px;
   font-weight: bold;
   background: white;
-  border: solid #2bc258 2px;
+  border: solid #218a41 2px;
   padding: 10px 20px 10px 20px;
   margin: 10px;
   text-decoration: none;
@@ -41,20 +41,21 @@
   transition: all 150ms linear;
 }
 .butn:hover {
-  background: #f2fcf5;
+  background: #218a4124;
   text-decoration: none;
 }
 
 .butn.toggled:hover {
-  background: #2dcf5b;
-  border: solid #2dcf5b 2px;
+  background: #218a41ed;
+  border: solid #218a41ed 2px;
   text-decoration: none;
 }
 .butn.toggled{
   color: #ffffff;
-  background: #2bc258;
+  background: #218a41;
   
 }
+
 
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
@@ -79,7 +80,7 @@
   background: white;
   overflow: hidden;
   z-index: -2;
-  border-bottom: solid #2bc258 7px;
+  border-bottom: solid #218a41 7px;
   border-radius: 5px;
 }
 .team-card:hover{
@@ -119,11 +120,15 @@
   border-radius: 28px;
   font-size: 14px;
   font-weight: bold;
-  border: solid #2bc258 2px;
+  border: solid #218a41 2px;
   padding: 5px 10px 5px 10px;
   margin: 5px;
   text-decoration: none;
   color: #ffffff;
   display: inline-block;
-  background: #2bc258;
+  background: #218a41;
+}
+
+.list{
+  margin-bottom: 25vw;
 }

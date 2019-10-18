@@ -12,7 +12,7 @@ export default [
     image: 'https://2019.igem.org/wiki/images/a/af/T--Potsdam--member_15.jpg',
     name: 'Jonas Kopka',
     quote: 'An individual quote from you',
-    text: 'A text about what you do/did in the project',
+    text: 'Did pipette an agar platte with promising growing microorganisms. Apart from that I only worked on the insilico projects.',
     tags:['web','insilico','human practice'],
     height:0
   },
@@ -41,11 +41,11 @@ export default [
     height:0
   },
   {
-    image: '',
+    image: 'https://2019.igem.org/wiki/images/1/19/T--Potsdam--member_16.jpg',
     name: 'Christian Min Hansch',
     quote: 'Work smart, not hard. - Dr. House',
     text: 'Making the video with all of you was the most fun part!',
-    tags:['insilico'],
+    tags:['insilico', 'human practice'],
     height:0
   },
   {
@@ -104,44 +104,4 @@ export default [
     tags:['invitro'],
     height:0
   },
-  {
-    image: '',
-    name: 'No one',
-    quote: '',
-    text: '',
-    tags:['web','insilico','lead','human practice','invitro'],
-    height:0
-  },
-  {
-    image: '',
-    name: 'No one',
-    quote: '',
-    text: '',
-    tags:['web','insilico','lead','human practice','invitro'],
-    height:0
-  },
-  {
-    image: '',
-    name: 'No one',
-    quote: '',
-    text: '',
-    tags:['web','insilico','lead','human practice','invitro'],
-    height:0
-  },
-  {
-    image: '',
-    name: 'No one',
-    quote: '',
-    text: '',
-    tags:['web','insilico','lead','human practice','invitro'],
-    height:0
-  },
-  {
-    image: '',
-    name: 'No one',
-    quote: '',
-    text: '',
-    tags:['web','insilico','lead','human practice','invitro'],
-    height:0
-  }
 ]
