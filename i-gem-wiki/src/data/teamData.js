@@ -104,4 +104,12 @@ export default [
     tags:['invitro'],
     height:0
   },
+  {
+    image: 'https://2019.igem.org/wiki/images/3/30/T--Potsdam--member_10.jpg',
+    name: 'Dominic Hamann',
+    quote: 'Think positive, cause thinking negative is way too easy',
+    text: 'I had to be persuaded to be part of the iGEM team and in the end I\'m thankful for that. I\'ve learned a lot and get to know some pretty nice people. So no regrets.',
+    tags:['invitro'],
+    height:0
+  },
 ]
