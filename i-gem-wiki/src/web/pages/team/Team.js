@@ -142,7 +142,7 @@ function Team() {
       <CustomScrollbar>
         <BackgroundImage scroll={scroll} xy={xy} title="Team Members" src="https://2019.igem.org/wiki/images/3/3a/T--Potsdam--group_picture.jpg"/>
         <div className="main-content">
-          <div className= "page-text">
+          <div className= "page-text blue">
             <h1> It's all about teamwork - iGEM Potsdam 2019   </h1>
 
             <p> <b> In Germany, there is the acronym - "TEAM: Toll Ein Anderer macht's" which means as much as "Great, there is another person

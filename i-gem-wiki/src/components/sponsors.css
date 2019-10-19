@@ -1,7 +1,7 @@
 .footer{
   margin: calc(1vw * 4) calc(2.00vw * 4) calc(1vw * 4) calc(2.00vw * 4);
   background: white;
-  overflow: hiddn;
+  overflow: hidden;
 }
 .img{
   position: relative;

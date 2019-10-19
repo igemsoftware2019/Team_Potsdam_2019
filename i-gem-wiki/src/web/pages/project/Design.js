@@ -4,24 +4,22 @@ import CustomScrollbar from 'components/CustomScrollbar';
 import BackgroundImage from 'components/BackgroundImage';
 import Sponsors from "components/Sponsors";
 
-import './Design.css';
-
 function Design() {
   const [{ scroll, xy }, set] = useSpring(() => ({ scroll: 0, xy: [0, 0] }))
   const onMove = useCallback(({ clientX: x, clientY: y }) => set({ xy: [x - window.innerWidth / 2, y - window.innerHeight / 2] }), [set])
   const onScroll = useCallback(e => set({ scroll: (e.target.scrollTop) }), [set])
-  const [propsInsilico, setInsilico] = useSpring(() => ({opacity: 1, display: 'block'}))
-  const [propsInvitro, setInvitro] = useSpring(() => ({opacity: 0, display: 'none'}))
+  const [propsInsilico, setInsilico] = useSpring(() => ({config: { duration: 1000 }, opacity: 1, display: 'block'}))
+  const [propsInvitro, setInvitro] = useSpring(() => ({config: { duration: 1000 }, opacity: 0, display: 'none'}))
   
 
   const [isToggled, setToggle] = useState(false)
   function toggle(){
     setToggle(!isToggled)
-    setInsilico({opacity: isToggled ? 1 : 0, display: isToggled ? 'block' : 'none'})
-  	setInvitro({opacity: isToggled ? 0 : 1, display: isToggled ? 'none' : 'block'})
+    setInsilico({config: { duration: 1000 }, opacity: isToggled ? 1 : 0, display: isToggled ? 'block' : 'none'})
+  	setInvitro({config: { duration: 1000 }, opacity: isToggled ? 0 : 1, display: isToggled ? 'none' : 'block'})
   }
-  let toggleClass = isToggled ? 'toggled': ''
-  let toggleClassOposite = isToggled ? '':'toggled'
+  let toggleClass = isToggled ? 'toggled' : ''
+  let toggleClassOposite = isToggled ? '' : 'toggled'
 
   return (
   <div className="page" onMouseMove={onMove} onScroll={onScroll}>
@@ -38,7 +36,7 @@ function Design() {
 		      In-vitro
 		    </span>
           </div>
-          <a.div className="page-text insilico" style={propsInsilico}>
+          <a.div className="page-text blue" style={propsInsilico}>
             <h1>In-silico Project Design</h1>
 			<p>As with all great scientific projects, in the beginning, there is only a vision; a vision of how the results of the project will impact the lives of many people for the better: the core reason for our efforts.</p>
 			<p><b>Our vision was simple, yet daring:</b></p>
@@ -149,7 +147,7 @@ function Design() {
 			<p><b>4.</b> Lorenz Christian Reimer, Anna Vetcininova, Joaquim Sardà Carbasse, CarolaSöhngen, Dorothea Gleim, Christian Ebeling, and Jörg Overmann. Bacdivein 2019: bacterial phenotypic data for high-throughput biodiversityanalysis. Nucleic Acids Research, 47(D1), 2018.</p>
 		    <p><b>5.</b> Zhu, J. Y., Park, T., Isola, P., & Efros, A. A. (2017). Unpaired image-to-image translation using cycle-consistent adversarial networks. In Proceedings of the IEEE international conference on computer vision (pp. 2223-2232).</p>
 	  	  </a.div>
-	  	  <a.div className= "page-text invitro" style={propsInvitro}>
+	  	  <a.div className= "page-text green" style={propsInvitro}>
 	  		<h1> In-vitro Project Design </h1>
 
 			<h2> Main engineering principles </h2>

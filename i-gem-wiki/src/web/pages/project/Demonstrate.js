@@ -1,85 +1,29 @@
-import React, { Component } from "react";
-import CustomScrollbar from "components/CustomScrollbar";
-import TextareaAutosize from "react-textarea-autosize";
-import axios from 'axios';
-/*
-Input field for aa sequence & Input field for Biobricks-ID (request to "http://parts.igem.org/cgi/xml/part.cgi?part=<...>" or better to "http://parts.igem.org/fasta/parts/<...>")
-Button sends data
-Progress bar/Loading circle
-(Tensorflow js)
+import React, { useCallback } from 'react'
+import { useSpring } from 'react-spring'
+import CustomScrollbar from 'components/CustomScrollbar';
+import BackgroundImage from 'components/BackgroundImage';
+import Sponsors from "components/Sponsors";
 
-for help:
-html <object>
-react js <object>
-CSSGenerator <object>
-CSS <object>
-*/
-
-class Demonstrate extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {value: ''};
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({value: event.target.value});
-    console.log(event.target)
-  }
-
-  handleSubmit(event) {
-  }
-  componentDidMount() {
-    //var request_url = "https://parts.igem.org/cgi/xml/part.cgi?part=" + String(this.state.value);
-    var request_url = "http://parts.igem.org/fasta/parts/" + String(this.state.value);
-    axios.get(request_url)
-      .then(res => {
-        console.log(res)
-        //const persons = res.data;
-        //this.setState({ persons });
-      })
-  }
-  
-  render() {
-    return (
-      <div className="page">
-        <CustomScrollbar>
+function Demonstrate() {
+  const [{ scroll, xy }, set] = useSpring(() => ({ scroll: 0, xy: [0, 0] }))
+  const onMove = useCallback(({ clientX: x, clientY: y }) => set({ xy: [x - window.innerWidth / 2, y - window.innerHeight / 2] }), [set])
+  const onScroll = useCallback(e => set({ scroll: (e.target.scrollTop) }), [set])
+  return (
+  <div className="page" onMouseMove={onMove} onScroll={onScroll}>
+      <CustomScrollbar>
+        <BackgroundImage scroll={scroll} xy={xy} title="Demonstrate" src="https://2019.igem.org/wiki/images/3/3a/T--Potsdam--group_picture.jpg"/>
+        <div className="main-content">
           <div>
-            <form onSubmit={this.handleSubmit}>
-            <label>
-              AA sequence:
-              <input type="text" value={this.state.value} onChange={this.handleChange} />
-            </label>
-            <input type="submit" value="Submit" />
-            </form>
+            <h1>asdf</h1>
+            <p> asdfasdf</p>
           </div>
-          <div>
-            <TextareaAutosize
-            minRows={3}
-            maxRows={6}
-              />
-          </div>
-          <div>
-            <form onSubmit={this.handleSubmit}>
-            <label>
-              Biobricks-ID
-              <input type="text" value={this.state.value} onChange={this.handleChange} />
-            </label>
-            <input type="submit" value="Submit" />
-            </form>
-          </div>
-          <div className="description">
-            hswhgsfsg
-          </div>
-        </CustomScrollbar>
-      </div>
-    );
-  }
+        <div className="page-text">
+        </div>
+        </div>
+        <Sponsors/>
+      </CustomScrollbar>
+    </div>
+  );
 }
-
-
-
+ 
 export default Demonstrate;

@@ -4,6 +4,7 @@ import './sponsors.css';
 function Sponsors(props) {
   return (
     <div className="footer">
+      <p><b>Sponsors:</b></p>
       <div className="img w170" style={{backgroundImage:'url(\'https://2019.igem.org/wiki/images/c/c6/T--Potsdam--sponsor_0.png\')' }}></div>
       <div className="img w460" style={{backgroundImage:'url(\'https://2019.igem.org/wiki/images/e/e5/T--Potsdam--sponsor_1.png\')' }}></div>
       <div className="img w200" style={{backgroundImage:'url(\'https://2019.igem.org/wiki/images/b/b1/T--Potsdam--sponsor_2.png\')' }}></div>

@@ -1,34 +1,72 @@
-import React, { Component } from "react";
+import React, { useCallback } from 'react'
+import { useSpring } from 'react-spring'
 import CustomScrollbar from 'components/CustomScrollbar';
-import './Description.css'
+import BackgroundImage from 'components/BackgroundImage';
+import Sponsors from "components/Sponsors";
 
-class Description extends Component {
-  render() {
-    return (
-      <div className="page">
-        <CustomScrollbar>
-        	<div className="description">
-	          <h1>What is the goal of our project? Why did we choose this topic?</h1>
-	          <p>The landscape of biological sciences has changed greatly in the last decades thanks to the advancement of in silico tools. Their integration in already well-established fields have provided us with a new scope with which to keep moving forward, while reducing the complexity of tasks which previously seemed inaccessible. Whether by allowing us to process an ever-growing amount of data in sequence analysis approaches, or by supplying an environment in which to reliable simulate biological systems, these Bioinformatics tools have already proven their utility. Not only that, but they have also shown signs of a yet untapped potential to be exploited in the future times. This year, we intended to implement said techniques into our project. By doing so, we also wished to promote collaboration and integration between people from different backgrounds (mainly Biology and Computer Science).</p>
-	          <p>Quickly described, our project focuses on generating thermophilic proteins in two different ways and comparing the results. Thermophilicity is a highly desirable protein property for industrial and scientific uses, due to instability being one of the main limiting factors in their application. Enhancing and improving their heat resistance, while maintaining their original activity, would greatly reduce the associated cost of an uncountable amount of processes.</p>
-	          <h1>In silico:</h1>
-	          <p>A major part of the project is Computer-Science-based.</p>
-	          <p>In order to achieve our goal, we obtain training sets by combining existing data from databases such as BacDive, NCBI and PDB. This allows us to feed our neural network models with millions of entries containing relevant information such as protein sequence, structures, and temperature information, and results in predictions for unseen parts of the datasets.</p>
-	          <p>Then, parts of these networks may be recycled into others (Transfer Learning), and the insight gained from the previous training and validation processes can be used to introduce mutations in protein sequences which improve their thermostability. We plan on using CycleGANs as well. These are more complex networks which would directly generate more heat resistant versions of an input protein.</p>
-	          <p>Essentially, our neural networks are trained to detect and predict thermostability of already existing proteins and use that knowledge to generate new proteins which show a higher resistance to heat.</p>
-	          <h1>In vitro:</h1>
-	          <p>While our in silico approach can be generalized to a wide range of proteins, we required to focus on a certain type of protein for our lab work. After carrying out some research, we decided to put our attention into lipases, which, industrially speaking, could be considered a Swiss army knife, due to their many useful applications in different fields.</p>
-	          <p>As a way of validating the results obtained by our neural network, we will build a mutant library (with the use of error-prone PCR, epPCR). This introduces mutations to a wild-type protein sequence, generating many different strands which will need to be screened afterwards.</p>
-	          <p>For the screening procedure, we developed a two-step protocol.</p>
-	          <ul>
-	            <li>First step: screening by using tributyrin agar assay. Only the colonies showing a clear halo on the tributyrin agar plate contain a working lipase, and only these will be selected for the second screening step.</li>
-	            <li>Second step: screening by using pNP lipase activity assay. Lipase activity will split the p-NitroPhenol esters into colourful compounds. These compounds can be quantified through spectrophotometric techniques, and only those colonies which show a higher activity will be selected for the next rounds of epPCR.</li>
-	          </ul>
-          </div> 
-        </CustomScrollbar>
-      </div>
-    );
-  }
+function Description() {
+  const [{ scroll, xy }, set] = useSpring(() => ({ scroll: 0, xy: [0, 0] }))
+  const onMove = useCallback(({ clientX: x, clientY: y }) => set({ xy: [x - window.innerWidth / 2, y - window.innerHeight / 2] }), [set])
+  const onScroll = useCallback(e => set({ scroll: (e.target.scrollTop) }), [set])
+  return (
+  <div className="page" onMouseMove={onMove} onScroll={onScroll}>
+      <CustomScrollbar>
+        <BackgroundImage scroll={scroll} xy={xy} title="Description" src="https://2019.igem.org/wiki/images/3/3a/T--Potsdam--group_picture.jpg"/>
+        <div className="main-content">
+        <div className="page-text blue">
+        	<h1>What is the goal of our project? Why did we choose this topic?</h1>
+			<p>The landscape of biological sciences has changed greatly in the last decades thanks to the advancement of in silico tools. Their integration in already well-established fields have provided us with a new scope with which to keep moving forward, while reducing the complexity of tasks which previously seemed inaccessible. Whether by allowing us to process an ever-growing amount of data in sequence analysis approaches, or by supplying an environment in which to reliable simulate biological systems, these Bioinformatics tools have already proven their utility. Not only that, but they have also shown signs of a yet untapped potential to be exploited in the future times. This year, we intended to implement said techniques into our project. By doing so, we also wished to promote collaboration and integration between people from different backgrounds (mainly Biology and Computer Science).</p>
+			<p>Quickly described, our project focuses on generating thermophilic proteins in two different ways and comparing the results. Thermophilicity is a highly desirable protein property for industrial and scientific uses, due to instability being one of the main limiting factors in their application. Enhancing and improving their heat resistance, while maintaining their original activity, would greatly reduce the associated cost of an uncountable amount of processes.</p>
+			<h3>In silico:</h3>
+			<p>A major part of the project is Computer-Science-based.</p>
+			<p>In order to achieve our goal, we obtain training sets by combining existing data from databases such as BacDive, NCBI and PDB. This allows us to feed our neural network models with millions of entries containing relevant information such as protein sequence, structures, and temperature information, and results in predictions for unseen parts of the datasets.</p>
+			<p>Then, parts of these networks may be recycled into others (Transfer Learning), and the insight gained from the previous training and validation processes can be used to introduce mutations in protein sequences which improve their thermostability. We plan on using CycleGANs as well. These are more complex networks which would directly generate more heat resistant versions of an input protein.</p>
+			<p>Essentially, our neural networks are trained to detect and predict thermostability of already existing proteins and use that knowledge to generate new proteins which show a higher resistance to heat.</p>
+			<h3>In vitro:</h3>
+			<p>While our in silico approach can be generalized to a wide range of proteins, we required to focus on a certain type of protein for our lab work. After carrying out some research, we decided to put our attention into lipases, which, industrially speaking, could be considered a Swiss army knife, due to their many useful applications in different fields.</p>
+			<p>As a way of validating the results obtained by our neural network, we will build a mutant library (with the use of error-prone PCR, epPCR). This introduces mutations to a wild-type protein sequence, generating many different strands which will need to be screened afterwards.</p>
+			<p>For the screening procedure, we developed a two-step protocol.</p>
+			<ul>
+				<li>First step: screening by using tributyrin agar assay. Only the colonies showing a clear halo on the tributyrin agar plate contain a working lipase, and only these will be selected for the second screening step.</li>
+				<li>Second step: screening by using pNP lipase activity assay. Lipase activity will split the p-NitroPhenol esters into colourful compounds. These compounds can be quantified through spectrophotometric techniques, and only those colonies which show a higher activity will be selected for the next rounds of epPCR.</li>
+			</ul>
+
+			<h1>Background</h1>
+			<p>In 1967, Thomas D. Brock, in his search for the upper temperature of life, described for the first-time organisms growing at temperatures higher than 92º C, the point at which water boils (Brock, 1967). Since then, several studies identified microbial growth at even higher temperatures reaching 122ºC (Blöchl et al., 1997, Kashefi & Lovley, 2003, Takai et al., 2008). For biologists, understanding temperature adaption is of great interest, as it might hold the answer to how life originated (Weiss et al., 2016, Lanier & Williams, 2017). Additionally, as Brock already stressed in his work, these studies can reveal the extremes to which evolution can be pushed (Brock, 1967). Yet, outside the scientific community, there was and still is a great interest in these adaption mechanisms, in particular concerning protein functionality, since their industrial applications appear limitless and the demand for them does not cease (Dumorné et al., 2017).</p>
+			<p>Proteins, the workers of life, participate in almost all biological processes. They are complex linear polymers made of a repertoire of 20 amino acids. The sequence in which these amino acids are linked to each other determines the three-dimensional structure which, at the same time, implies the function of the protein (Berg et al., 2012). Folding and maintenance of such structure occurs due to intramolecular interactions between the amino acids. These can be heavily affected by parameters such as temperature or acidity. The ability to remain in the folded state under extreme temperature conditions is referred to as thermostability (Jaenicke & Böhm, 1998, Zhou & Pang, 2018). Protein thermostability can be inferred as a direct relationship between the optimal growth temperature of the organism producing the protein and its melting point (Gromiha et al., 1999).</p>
+			<p>Thermostability is a desired characteristic of proteins in many industrial fields because thermostable proteins remain functional under often very harsh industrial conditions. Additionally, a bio-based economy reduces contamination risks and can improve other characteristics, for instance, increasing substrate solubility (Dumorné et al., 2017). Applications of thermostable proteins are countless, ranging from lipases and cellulases used as detergent additives or in food processing (Dadshahi et al., 2016), glucosidases for biodiesel production (Aguirre et al., 2018) to polymerases used in research by means of the polymerase chain reaction (PCR) (Xu et al., 2017). The wide range of current fields hints at the immense potential for engineering thermostable proteins for more effective usage at higher temperatures and in even more fields.</p>
+			<p>Direct evolution and machine learning are the two main approaches used to modify a specific protein property. Direct evolution-based methods try to imitate natural selection pressure by introducing random mutations within the protein sequence and selecting for those variants which show improvement for the desired trait (Chen & Arnold, 1993). While this methodology has been proven to work in various cases (Sachsenhauser & Bardwell, 2018), for many proteins the number of possible combinations is enormous, and the screening process might be laborious, expensive and take a long time. Moreover, identification of the contribution of individual short sequences within a protein to the overall function and structure of a mutated protein is almost impossible or would require additional steps which increase the cost of the procedure considerably (Yang et al., 2019). Machine learning-based methods are capable of retaining such information. This ensures that beneficial sequences are always present in the new variants. This considerably reduces the number of variants that need to be screened. In addition, the possibility to screen many more sequences thanks to computational power highly optimizes the selection process of mutated proteins (Yang et al., 2019). Nevertheless, machine learning does not render direct evolution-based methods redundant, as the success of the machine-learning based approach heavily relies on the quality and quantity of experimentally determined sequences and their corresponding features (Wu et al., 2019).</p>
+			<p>For our project we focused on the physiologically very relevant enzymes: Lipases. Lipases (E.C.3.1.1.3) catalyze the hydrolysis of triglycerides, resulting in glycerol and fatty acids as products. This has a huge commercial potential, for instance, in the production of biodiesel (Zhao et al., 2015). Lipases from Bacillus spp have been shown to be suitable for industrial purposes, as they are small in size, easy to express, purify and show thermophilic characteristics. The lipase LipBA, from B. amyloliquefaciens exhibits these traits under high pH levels, being able to keep almost 50% of residual activity at 70ºC. This suggests that recombinant variants of LipBA have a profound potential value in the industry (Cai et al., 2014, Saengsanga et al., 2016).</p>
+			<p>In this project we developed a neural network based on existing databases like BacDive, NCBI and PDB to approximate the thermostability of proteins of interest by predicting the optimal growth conditions to express them. In addition, in order to test and validate our model, we have identified beneficial sequences to improve the thermostability of the lipase LipBA from B. amyloliquefaciens. We aimed also to express these new variants and show that these characteristics are indeed improved.</p>
+			<h2>References</h2>
+			<p><b>1.</b> Aguirre, A., Eberhardt, F., Hails, G., Cerminati, S., Castelli, M. E., Rasia, R. M., ... & Peiru, S. (2018). The production, properties, and applications of thermostable steryl glucosidases. World Journal of Microbiology and Biotechnology, 34(3), 40.</p>
+			<p><b>2.</b> Berg, J. M., Tymoczko, J. L., & Stryer, L. (2012). Biochemistry/Jeremy M. Berg, John L. Tymoczko, Lubert Stryer; with Gregory J. Gatto, Jr.</p>
+			<p><b>3.</b> Blöchl, E., Rachel, R., Burggraf, S., Hafenbradl, D., Jannasch, H. W., & Stetter, K. O. (1997). Pyrolobus fumarii, gen. and sp. nov., represents a novel group of archaea, extending the upper temperature limit for life to 113 C. Extremophiles, 1(1), 14-21.</p>
+			<p><b>4.</b> Brock, T. D. (1967). Life at High Temperatures: Evolutionary, ecological, and biochemical significance of organisms living in hot springs is discussed. Science, 158(3804), 1012-1019.</p>
+			<p><b>5.</b> Cai, X., Ma, J., Wei, D. Z., Lin, J. P., & Wei, W. (2014). Functional expression of a novel alkaline-adapted lipase of Bacillus amyloliquefaciens from stinky tofu brine and development of immobilized enzyme for biodiesel production. Antonie Van Leeuwenhoek, 106(5), 1049-1060.</p>
+			<p><b>6.</b> Chen, K., & Arnold, F. H. (1993). Tuning the activity of an enzyme for unusual environments: sequential random mutagenesis of subtilisin E for catalysis in dimethylformamide. Proceedings of the National Academy of Sciences, 90(12), 5618-5622.</p>
+			<p><b>7.</b> Dadshahi, Z., Homaei, A., Zeinali, F., Sajedi, R. H., & Khajeh, K. (2016). Extraction and purification of a highly thermostable alkaline caseinolytic protease from wastes Penaeus vannamei suitable for food and detergent industries. Food chemistry, 202, 110-115.</p>
+			<p><b>8.</b> Dumorné, K., Córdova, D. C., Astorga-Eló, M., & Renganathan, P. (2017). Extremozymes: a potential source for industrial applications. J Microbiol Biotechnol, 27(4), 649-659.</p>
+			<p><b>9.</b> Gromiha MM, Oobatake M, Sarai A (1999). Important amino acid properties for enhanced thermostability from mesophilic to thermophilic proteins. Biophysical Chemistry, 82(1):51–67.</p>
+			<p><b>10.</b> Jaenicke, R., & Böhm, G. (1998). The stability of proteins in extreme environments. Current opinion in structural biology, 8(6), 738-748.</p>
+			<p><b>11.</b> Kashefi, K., & Lovley, D. R. (2003). Extending the upper temperature limit for life. Science, 301(5635), 934-934.</p>
+			<p><b>12.</b> Lanier, K. A., & Williams, L. D. (2017). The origin of life: models and data. Journal of molecular evolution, 84(2-3), 85-92.</p>
+			<p><b>13.</b> Sachsenhauser, V., & Bardwell, J. C. (2018). Directed evolution to improve protein folding in vivo. Current opinion in structural biology, 48, 117-123.</p>
+			<p><b>14.</b> Saengsanga, T., Siripornadulsil, W., & Siripornadulsil, S. (2016). Molecular and enzymatic characterization of alkaline lipase from Bacillus amyloliquefaciens E1PA isolated from lipid-rich food waste. Enzyme and microbial technology, 82, 23-33.</p>
+			<p><b>15.</b> Takai, K., Nakamura, K., Toki, T., Tsunogai, U., Miyazaki, M., Miyazaki, J., ... & Horikoshi, K. (2008). Cell proliferation at 122 C and isotopically heavy CH4 production by a hyperthermophilic methanogen under high-pressure cultivation. Proceedings of the National Academy of Sciences, 105(31), 10949-10954.</p>
+			<p><b>16.</b> Weiss, M. C., Sousa, F. L., Mrnjavac, N., Neukirchen, S., Roettger, M., Nelson-Sathi, S., & Martin, W. F. (2016). The physiology and habitat of the last universal common ancestor. Nature Microbiology, 1(9), 16116.</p>
+			<p><b>17.</b> Wu, Z., Kan, S. J., Lewis, R. D., Wittmann, B. J., & Arnold, F. H. (2019). Machine learning-assisted directed protein evolution with combinatorial libraries. Proceedings of the National Academy of Sciences, 116(18), 8852-8858.</p>
+			<p><b>18.</b> Xu, W., Jiang, W., Wang, J., Yu, L., Chen, J., Liu, X., ... & Zhu, T. F. (2017). Total chemical synthesis of a thermostable enzyme capable of polymerase chain reaction. Cell Discovery, 3, 17008.</p>
+			<p><b>19.</b> Yang, K. K., Wu, Z., & Arnold, F. H. (2019). Machine-learning-guided directed evolution for protein engineering. Nature methods, 1.</p>
+			<p><b>20.</b> Zhao, X., Qi, F., Yuan, C., Du, W., & Liu, D. (2015). Lipase-catalyzed process for biodiesel production: enzyme immobilization, process simulation and optimization. Renewable and Sustainable Energy Reviews, 44, 182-197.</p>
+			<p><b>21.</b> Zhou, H. X., & Pang, X. (2018). Electrostatic interactions in protein structure, folding, binding, and condensation. Chemical reviews, 118(4), 1691-1741.</p>
+
+	  	</div>
+        </div>
+        <Sponsors/>
+      </CustomScrollbar>
+    </div>
+  );
 }
-
+ 
 export default Description;
