@@ -1,0 +1,54 @@
+.page > div:nth-child(1){
+	overflow-y: scroll!important;
+  padding-right: 17px;
+  box-sizing: content-box;
+}
+
+.logoHome{
+  width: 40vw;
+  height: 40vw;
+  position: absolute;
+  left: 7vw;
+  top: 7vw;
+}
+.logoHome img {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+}
+.openerText{
+  top: 12vw;
+  position: absolute;
+  left: 45vw;
+  width: 45vw;
+}
+.openerText h1{
+  font-size: calc(15*0.5vw);
+  font-weight: bold;
+  color: #fff;
+}
+.openerText > p:nth-child(2){
+  font-size: calc(4*0.5vw);
+  font-style: italic;
+  color: #fff;
+}
+
+.openerText > p:nth-child(3){
+  font-size: calc(4.5*0.5vw);
+  font-weight: bold;
+  color: #fff;
+}
+
+iframe{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 100;
+}
+.center{
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}

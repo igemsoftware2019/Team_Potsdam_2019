@@ -11,6 +11,8 @@ body{
   color: #0b7faf;
 }
 .green{
+  #218a41 
+
   background: #f2fcf5;
   color: #2dcf5b;
 }*/
@@ -192,6 +194,9 @@ h3{
 } 
 .green h1,.green h2,.green h3,.green h4{
   color: #218a41;
+}
+.red h1,.red h2,.red h3,.red h4{
+  color: #ae2d1e;
 } 
 
 .noselect {

@@ -1,5 +1,5 @@
-import React, { useCallback } from 'react'
-import { useSpring } from 'react-spring'
+import React, { useCallback, useState } from 'react'
+import { useSpring,animated as a } from 'react-spring'
 import CustomScrollbar from 'components/CustomScrollbar';
 import BackgroundImage from 'components/BackgroundImage';
 import Sponsors from "components/Sponsors";
@@ -8,29 +8,58 @@ function Description() {
   const [{ scroll, xy }, set] = useSpring(() => ({ scroll: 0, xy: [0, 0] }))
   const onMove = useCallback(({ clientX: x, clientY: y }) => set({ xy: [x - window.innerWidth / 2, y - window.innerHeight / 2] }), [set])
   const onScroll = useCallback(e => set({ scroll: (e.target.scrollTop) }), [set])
+  const [propsInsilico, setInsilico] = useSpring(() => ({config: { duration: 1000 }, opacity: 1, display: 'block'}))
+  const [propsInvitro, setInvitro] = useSpring(() => ({config: { duration: 1000 }, opacity: 0, display: 'none'}))
+  
+
+  const [isToggled, setToggle] = useState(false)
+  function toggle(){
+    setToggle(!isToggled)
+    setInsilico({config: { duration: 1000 }, opacity: isToggled ? 1 : 0, display: isToggled ? 'block' : 'none'})
+  	setInvitro({config: { duration: 1000 }, opacity: isToggled ? 0 : 1, display: isToggled ? 'none' : 'block'})
+  }
+  let toggleClass = isToggled ? 'toggled': ''
+  let toggleClassOposite = isToggled ? '':'toggled'
+
   return (
   <div className="page" onMouseMove={onMove} onScroll={onScroll}>
       <CustomScrollbar>
-        <BackgroundImage scroll={scroll} xy={xy} title="Description" src="https://2019.igem.org/wiki/images/3/3a/T--Potsdam--group_picture.jpg"/>
+        <BackgroundImage scroll={scroll} xy={xy} title="Inspiration" src="https://2019.igem.org/wiki/images/3/3a/T--Potsdam--group_picture.jpg"/>
         <div className="main-content">
-        <div className="page-text blue">
-        	<h1>What is the goal of our project? Why did we choose this topic?</h1>
-			<p>The landscape of biological sciences has changed greatly in the last decades thanks to the advancement of in silico tools. Their integration in already well-established fields have provided us with a new scope with which to keep moving forward, while reducing the complexity of tasks which previously seemed inaccessible. Whether by allowing us to process an ever-growing amount of data in sequence analysis approaches, or by supplying an environment in which to reliable simulate biological systems, these Bioinformatics tools have already proven their utility. Not only that, but they have also shown signs of a yet untapped potential to be exploited in the future times. This year, we intended to implement said techniques into our project. By doing so, we also wished to promote collaboration and integration between people from different backgrounds (mainly Biology and Computer Science).</p>
-			<p>Quickly described, our project focuses on generating thermophilic proteins in two different ways and comparing the results. Thermophilicity is a highly desirable protein property for industrial and scientific uses, due to instability being one of the main limiting factors in their application. Enhancing and improving their heat resistance, while maintaining their original activity, would greatly reduce the associated cost of an uncountable amount of processes.</p>
-			<h3>In silico:</h3>
-			<p>A major part of the project is Computer-Science-based.</p>
-			<p>In order to achieve our goal, we obtain training sets by combining existing data from databases such as BacDive, NCBI and PDB. This allows us to feed our neural network models with millions of entries containing relevant information such as protein sequence, structures, and temperature information, and results in predictions for unseen parts of the datasets.</p>
-			<p>Then, parts of these networks may be recycled into others (Transfer Learning), and the insight gained from the previous training and validation processes can be used to introduce mutations in protein sequences which improve their thermostability. We plan on using CycleGANs as well. These are more complex networks which would directly generate more heat resistant versions of an input protein.</p>
-			<p>Essentially, our neural networks are trained to detect and predict thermostability of already existing proteins and use that knowledge to generate new proteins which show a higher resistance to heat.</p>
-			<h3>In vitro:</h3>
-			<p>While our in silico approach can be generalized to a wide range of proteins, we required to focus on a certain type of protein for our lab work. After carrying out some research, we decided to put our attention into lipases, which, industrially speaking, could be considered a Swiss army knife, due to their many useful applications in different fields.</p>
-			<p>As a way of validating the results obtained by our neural network, we will build a mutant library (with the use of error-prone PCR, epPCR). This introduces mutations to a wild-type protein sequence, generating many different strands which will need to be screened afterwards.</p>
-			<p>For the screening procedure, we developed a two-step protocol.</p>
-			<ul>
-				<li>First step: screening by using tributyrin agar assay. Only the colonies showing a clear halo on the tributyrin agar plate contain a working lipase, and only these will be selected for the second screening step.</li>
-				<li>Second step: screening by using pNP lipase activity assay. Lipase activity will split the p-NitroPhenol esters into colourful compounds. These compounds can be quantified through spectrophotometric techniques, and only those colonies which show a higher activity will be selected for the next rounds of epPCR.</li>
-			</ul>
-
+          <div>
+          	<span className={"butnblue noselect " + toggleClassOposite} onClick={toggle}>
+    		      Description and Inspiration
+    		    </span>
+    		    <span className={"butnred noselect " + toggleClass} onClick={toggle}>
+    		      Background
+    		    </span>
+          </div>
+        <a.div className="page-text blue" style={propsInsilico}>
+        	<h1>Project description and inspiration</h1>
+			<p>Our project, TherMaL.UP, focuses on the generation of thermophilic protein sequences via the use of neural networks. As mentioned in several publications and review articles (e.g; Pezeshgi Modarres et al., 2016, and Lehmann et al., 2001), thermophilicity is a highly desirable protein property for both industrial and scientific applications, even motivating the creation of dedicated databases focused on relevant information for this characteristic (ProtDataTherm, established by Pezeshgi Modarres et al., 2018). Availability of thermostable variants of proteins tends to reduce production costs, since it reduces monitoring over the temperature of the processes, and broadens the potential uses of the protein. A particular application for thermostable proteins which will likely be subject to further research in the next years is biodiesel refining. Use of thermostable variants with respect to mesostable ones has proven to reduce the risk of contamination and to improve substrate solubility during the process (Turner et al.). Nonetheless, predicting mutations needed to convey thermophilic qualities can be challenging, as many individual factors (e.g. tertiary structure, proportion of disulphide bonds and side chain hydrogen bonds, hydrophobicity) (Robinson et al., 2015, Kumar et al., 2000, and Danson et al., 1996) need to be taken into consideration.</p>
+			<p>In order to develop a new application that assists researchers who desire to carry out directed evolution, we decided to follow a machine-learning-based approach, more particularly using Deep Convolutional Neural Networks (CNNs).</p>
+			<p>During a first training stage, we trained our model with a dataset containing circa 7 million amino acid sequences, in order to predict optimal growth temperature of the organism where the corresponding protein originated from. While optimal temperature range for a polypeptide may not be always available in the databases, optimal growth temperature of an organism will correlate, as a general rule, with the thermostability range of their native proteins. This association allows training the deep CNNs to establish a relationship between structure (including potential patterns affecting secondary and tertiary structures) and thermostability.</p>
+			<p>Once the training phase was complete, by recycling parts from these previous networks via Transfer Learning, and the use of cross-validation and Gradient Boosting techniques, the insight gained can be used to introduce new single point mutations in a certain protein sequence of interest, with the purpose of finding new stable variants.</p>
+			<p>As an extra validation method for the conclusions derived from the neural network, we developed a parallel <i>in vitro</i> workflow with the aim of generating new thermophilic variants of a particular protein (Lipase from <i>Bacillus amyloliquefaciens</i>, or LipBA) via directed evolution. More precisely, we designed building a mutant library with the use of error-prone PCR. This procedure introduces mutations to a wild-type protein sequence, generating many different strands which are to be screened for activity afterwards, following a custom two-assay sequential protocol. Additionally, we will synthetize DNA sequences generated by our neural network approach.</p>
+			<h2>Why did we choose this project?</h2>
+			<p>The landscape of biological sciences has changed greatly in the last decades thanks to the advancement of in silico tools. Their integration in already well-established fields has provided us with a new scope with which to keep moving forward, while reducing the complexity of tasks which previously seemed inaccessible. Whether by allowing us to process an ever-growing amount of data in sequence analysis approaches, or by supplying an environment in which to reliable simulate biological systems, these Bioinformatics tools have already proven their utility. Not only that, but they have also shown signs of a yet untapped potential to be exploited in the future times. This year, we wished to find a project which included said tools as a main component, but at the same time provided the chance to encourage close and direct cooperation from team members with diverse backgrounds. With the progress of science, the ramification and specialization on the different fields is inevitable, but we believe that it is important to stimulate collaboration between branches.</p>
+			<p>Naturally, generating a potentially thermostable polypeptide sequence is not the final goal of these models. An arduous follow up consisting on purifying and characterizing the resulting protein must be carried out. Such a process entails significant time and economic investments, both of which can be reduced if the quality of the base model is improved, as the number of potential unsatisfactory results is diminished.</p>
+			<p>Considering all the previous points, it was obvious to us that there was certainly an opportunity for development of a new model which would ensure both stability and functionality of the output sequence. By doing so, we would greatly cut down the work and cost of directed evolution processes.</p>
+			<p>While looking into previous iGEM projects, the idea for the Undergraduate Finalist Heidelberg 2017 caught our attention. They developed a deep learning network which was meant to predict function of a protein based on the primary structure. Even if we had already defined the main goals and approaches of our strategy before we found theirs, they served as source of inspiration when generating our own model from scratch. On later stages of our project, we additionally decided to introduce some improvements in their DeeProtein network.</p>
+			<p></p>
+			<h2>Bibliography and sources</h2>
+			<p><b>1.</b>Pezeshgi Modarres H, Mofrad MR, Sanati-Nezhad A (2016) Protein thermostability engineering, RSC Adv., 2016, 6, 115252-115270</p>
+			<p><b>2.</b>Lehmann M., Wyss M. (2001) Engineering proteins for thermostability: the use of sequence alignments versus rational design and directed evolution. Current Opinion in Biotechnology, Volume 12, Issue 4, 1 August 2001, 371-375</p>
+			<p><b>3.</b>Pezeshgi Modarres H, Mofrad MR, Sanati-Nezhad A (2018) ProtDataTherm: A database for thermostability analysis and engineering of proteins. PLoS ONE 13(1): e0191222.</p>
+			<p><b>4.</b>Robinson P. K. (2015). Enzymes: principles and biotechnological applications. Essays in biochemistry, 59, 1–41. </p>
+			<p><b>5.</b>Turner P., Mamo G., Karlsson E. N. (2007), Potential and utilization of thermophiles and thermostable enzymes in biorefining. Microbial Cell Factories, 9, 1475-2859</p>
+			<p><b>6.</b>Kumar S., Tsai C., Nussinov R., (2000), Factors enhancing protein thermostability. Protein Engineering, Design and Selection, Volume 13, Issue 3, March 2000, 179–191 </p>
+			<p><b>7.</b>Danson M., Hough D., Russell R., & Taylor G., Pearl L., (1996). Enzyme thermostability and thermoactivity. Protein Engineering. 9(8): 629-30.</p>
+			<p><b>8.</b>Harrington L.B., Paez-Espino D., Staahl B. T., Chen J. S., Ma E., Kyrpides N. C., Doudna J. A., (2017), A thermostable Cas9 with increased lifetime in human plasma. Nature Communications 1424, Volume 8, Issue 1, 2041-1723.</p>
+			<p><b>9.</b>Musil M., Stourac J., Bendl J, Brezovsky J., Prokop Z., Zendulka J., Martinek T., Bednar D., Damborsky J., (2017), FireProt: web server for automated design of thermostable proteins. Nucleic Acids Research, Volume 45, Issue W1, 3 July 2017, Pages W393–W399.</p>
+			<p><b>10.</b>iGEM Heidelberg 2017, The Phage and the Furious</p>
+		</a.div>
+		<a.div className="page-text red" style={propsInvitro}>
 			<h1>Background</h1>
 			<p>In 1967, Thomas D. Brock, in his search for the upper temperature of life, described for the first-time organisms growing at temperatures higher than 92º C, the point at which water boils (Brock, 1967). Since then, several studies identified microbial growth at even higher temperatures reaching 122ºC (Blöchl et al., 1997, Kashefi & Lovley, 2003, Takai et al., 2008). For biologists, understanding temperature adaption is of great interest, as it might hold the answer to how life originated (Weiss et al., 2016, Lanier & Williams, 2017). Additionally, as Brock already stressed in his work, these studies can reveal the extremes to which evolution can be pushed (Brock, 1967). Yet, outside the scientific community, there was and still is a great interest in these adaption mechanisms, in particular concerning protein functionality, since their industrial applications appear limitless and the demand for them does not cease (Dumorné et al., 2017).</p>
 			<p>Proteins, the workers of life, participate in almost all biological processes. They are complex linear polymers made of a repertoire of 20 amino acids. The sequence in which these amino acids are linked to each other determines the three-dimensional structure which, at the same time, implies the function of the protein (Berg et al., 2012). Folding and maintenance of such structure occurs due to intramolecular interactions between the amino acids. These can be heavily affected by parameters such as temperature or acidity. The ability to remain in the folded state under extreme temperature conditions is referred to as thermostability (Jaenicke & Böhm, 1998, Zhou & Pang, 2018). Protein thermostability can be inferred as a direct relationship between the optimal growth temperature of the organism producing the protein and its melting point (Gromiha et al., 1999).</p>
@@ -61,7 +90,7 @@ function Description() {
 			<p><b>20.</b> Zhao, X., Qi, F., Yuan, C., Du, W., & Liu, D. (2015). Lipase-catalyzed process for biodiesel production: enzyme immobilization, process simulation and optimization. Renewable and Sustainable Energy Reviews, 44, 182-197.</p>
 			<p><b>21.</b> Zhou, H. X., & Pang, X. (2018). Electrostatic interactions in protein structure, folding, binding, and condensation. Chemical reviews, 118(4), 1691-1741.</p>
 
-	  	</div>
+	  	</a.div>
         </div>
         <Sponsors/>
       </CustomScrollbar>
