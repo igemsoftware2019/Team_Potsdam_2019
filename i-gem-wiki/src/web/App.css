@@ -203,3 +203,59 @@ h3{
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
 }
+
+.Collapsible {
+  background-color: #0b7faf;
+  border-radius: 15px;
+  padding-left: 10px;
+  margin: 20px;
+}
+
+.Collapsible__contentInner {
+  padding: 10px;
+  border: 1px solid #0b7faf;
+  border-top: 0;
+}
+.Collapsible__contentInner > * {
+  border-radius: 20px;
+}
+.Collapsible__trigger {
+  display: block;
+  font-weight: 400;
+  text-decoration: none;
+  color: grey;
+  position: relative;
+  padding: 10px;
+  background: $cyan;
+  color: white;
+}
+
+.Collapsible__trigger:after {
+  content: '\25B6';
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: block;
+  transition: transform 300ms;
+}
+.is-closed:after {
+  -moz-transform: rotate(180.0deg);
+  transform: rotate(180.0deg);
+}
+
+.is-open:after {
+  -moz-transform: rotate(90.0deg);
+  transform: rotate(90.0deg);
+}
+.Collapsible__trigger.is-disabled {
+  opacity: 0.5;
+  background-color: grey;
+}
+
+pre {
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}

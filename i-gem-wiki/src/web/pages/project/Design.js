@@ -2,6 +2,7 @@ import React, { useCallback, useState} from 'react'
 import { useSpring, animated as a} from 'react-spring'
 import CustomScrollbar from 'components/CustomScrollbar';
 import BackgroundImage from 'components/BackgroundImage';
+import SubtitleImage from 'components/SubtitleImage';
 import Sponsors from "components/Sponsors";
 
 function Design() {
@@ -45,13 +46,13 @@ function Design() {
 			
 			<h2>Problem setting</h2>
 			<p>Overall, we wanted to develop an application (preferably web-based) that any researcher with internet access could use. This application should be able to give a mutated version of a protein (or a list of suggested mutations) for a polypeptide specified by the user. The specified mutant should have a higher melting temperature as the protein specified by the user, if possible. All the internal workings should be hidden away, but accessible through the code provided on GitHub. This provides an easy to use interface with a straight forward use case. </p>
-			<p>TODO IMAGE Subtitle: Visualisation of change in melting temperature (dTM) between wild type (blue) and mutant (orange) proteins</p>
+			<SubtitleImage subtitle="Image 1: Visualisation of change in melting temperature (dTM) between wild type (blue) and mutant (orange) proteins" src="https://2019.igem.org/wiki/images/f/f2/T--Potsdam--insilico_design_0.png"/>
 			<p>The first step to towards this goal was to figure out how to predict single point mutations which improve thermostability.</p>
 			
 			<h2>Neural Networks</h2>
 			<p>Since the main machine learning architecture used during our research are Artificial Neural Networks, here is a brief intro:</p>
 			<p>The archetypical neural network looks something like this:</p>
-			<p>TODO IMAGE(https://de.wikipedia.org/wiki/K%C3%BCnstliches_neuronales_Netz#/media/Datei:Neural_network.svg)</p>
+			<SubtitleImage subtitle="Image 2: Basic structure of a simple fully connected layer." src="https://2019.igem.org/wiki/images/thumb/c/cb/T--Potsdam--insilico_design_1.png/800px-T--Potsdam--insilico_design_1.png"/>
 			<p>It has an input layer (the green one on the left), where we feed the network with data. Then it can have multiple hidden layers (the blue one) where most of the computation is going on, and finally an output layer (yellow one) were we get the results/predictions of our networks. </p>
 			<p>Each dot in this graph constitutes a single artificial neuron (inspired by the neurons in our brain), which has its inputs (here from the left) does some computation (just some basic multiplication and addition based on the inputs and its current state, followed by an activation) and outputs a number (the result of the internal computation), which is passed along to the next layer. </p>
 			<p>These networks can be “trained” to give some specific output based on the input which works something like this: we feed the network a data sample, the networks gives a prediction for that data point, and we tell it how good the prediction was. Based on this feedback the network adjusts the internal states of the artificial neurons, so that next time the prediction is closer to what we would judge as correct. </p>
@@ -74,7 +75,7 @@ function Design() {
 			<h3>Datasets</h3>
 			<p>NCBI dataset: Our first approach was to search the National Center for Biotechnology Information (abbreviation NCBI) database for thermophilic organisms and extract their proteins which resulted in around ~100k proteins for which we knew where thermophilic which we used a validation for some models. </p>
 			<p>This data was not sufficient for our use case this is why we researched and aggregated data of other existing datasets.</p>
-			<p>TODO IMAGE Subtitle: Overview of datasets related to protein thermostability</p>
+			<SubtitleImage subtitle="Image 3: Overview of datasets related to protein thermostability" src="https://2019.igem.org/wiki/images/e/e4/T--Potsdam--insilico_design_2.png"/>
 			<p><b>ProTherm [2]:</b></p>
 			<p>1. Widely used in this problem domain</p>
 			<p>2. Contains: Wildtype mutant pairs with dTm information (size ~18k)</p>
@@ -85,11 +86,11 @@ function Design() {
 			<p>3. Problem: only contains thermostability class, and not temperature</p>
 			<p><b>BacDive [4]:</b></p>
 			<p>This database contains various information on bacteria, including their growth temperature range. We used this database in combination with the NCBI database to construct the BacDive+ dataset, which contains paris of protein amino acid sequences and organism growth temperature information (of the organism the proteins sequence can be found in). The construction of BacDive+ is thus very similar to ProtDataTherm, however, we kept the real valued information about the organism growth temperature and did not convert it into thermal stability classes. The overall size of the dataset is about 7Mio sequences and 20k organisms. In the graph below you can see the distribution of the Averaged Organism Growth Temperature range among the proteins: </p>
-			<p>TODO IMAGE </p>
+			<SubtitleImage subtitle="Image 4: Distribution of proteins based on their averaged organism growth temperature range (AOGTR)" src="https://2019.igem.org/wiki/images/5/53/T--Potsdam--insilico_design_3.png"/>
 
 			<p><b>Merck&Co [1]:</b></p>
 			<p>The Merck&Co dataset stems from the McGuinness et al. 2019 paper and is the bases for the Merck&Co+ dataset, which we constructed by additionally supplementing the dataset with the actual amino acid sequences and sequence representations extracted from one of our deep convolutional neural networks. Overall it is a high quality dataset based on ProTherm->HoTMuSiC->Merck&Co->Merck&Co+ and contains about 2k wildtype and mutant AA sequence pairs (and their corresponding mutation) with many features and the change in melting temperature (dTm), which we tried to predict. Below you can see the distribution of the label (the dTm) in the overall dataset. </p>
-			<p>TODO IMAGE </p>
+			<SubtitleImage subtitle="Image 5: Distribution of the melting temperature change (dTm) for all wildtype mutant pairs" src="https://2019.igem.org/wiki/images/e/e6/T--Potsdam--insilico_design_4.png"/>
 			
 			<h3>Machine Learning Approaches</h3>
 			<p>From our literature research we knew that Support Vector Machines and Random Forests performed well on predicting dTm upon single point mutations. However, we wanted to advance this research with the following more advanced and new machine learning methods. </p>
@@ -110,7 +111,7 @@ function Design() {
 			<p>After the evaluation, however, we started thinking about using the network for transfer learning for protein melting temperature prediction, and decided that since thermostability class prediction is fundamentally a classification problem, we should look for a dataset with which we could perform a regression, which would be more close to the regression problem of predicting protein melting temperature, thus we created BacDive+. </p>
 			
 			<h3>2.2 Organism growth temperature prediction</h3>
-			<p>Our next step is to more accurately determine the temperature stability a proteins for this we use the averaged  organism growth temperature range (AOGTR) of about 7Mio proteins found in the BacDive+ dataset. </p>
+			<p>Our next step is to more accurately determine the temperature stability a proteins for this we use the averaged organism growth temperature range (AOGTR) of about 7Mio proteins found in the BacDive+ dataset. </p>
 			<p>To increase the generalization capability of our models, we trained our deep residual Convolutional Neural Networks on a larger set of data to prevent the models from overfitting on the relatively small datasets that contain information about mutations and the corresponding melting temperature change. The expectation is that the model learns key patterns that make a sequence thermophilic which is already researched to be the case for image classification using similar networks. </p>
 			<p>The connections to predicting thermostability in the form of the melting temperature is the following: Proteins of an organism with high growth temperature must also function at higher temperatures, so most of the proteins probably have a higher melting temperature as well. </p>
 			<p>The implications here are more of a statistical nature and not without its exceptions e.g. there are a hand full of proteins in E.coli which survive cooking, but it’s exactly this statistical correlation which the deep residual Convolutional Neural Networks and later exploit to create more thermostable mutants. </p>
@@ -156,10 +157,7 @@ function Design() {
 
 			<p><b>A detective’s game </b>– As we have several hundreds of colonies now, we need to find out if the lipase is still active or if we might have mutated a part of the sequence that is essential for the lipase activity. Additionally, we want to find out if our work was successful, meaning if there is a higher stability at a higher temperature. The method we choose for this is a para-Nitro-phenol (pNP)-ester-hydrolysis assay (Tabatabai, 1994). If there is lipase activity in the lysate of the cells of the colony, it will hydrolyse the pNP-ester into p-Nitrophenol and the corresponding fatty acid: </p>
 
-			<p> TODO please include the image ''invitro_project:design_image_1'', thanks</p>
-
-			<p> <i> Image 1: Principle of the pNP-ester hydrolysys  assay: lipase catalysed reaction with pNP-ester as substrate in water-solution splitted into p-Nitrophenol and corresponding fatty acid. </i> </p>
-
+			<SubtitleImage subtitle="Image 1: Principle of the pNP-ester hydrolysys  assay: lipase catalysed reaction with pNP-ester as substrate in water-solution splitted into p-Nitrophenol and corresponding fatty acid." src="https://2019.igem.org/wiki/images/5/52/T--Potsdam--invitro_design_1.jpg"/>
 
 			<p>The p-Nitrophenol has a yellow colour that can be detected via photometric measurement at a wavelength of 410 nm.</p>
 
@@ -173,15 +171,12 @@ function Design() {
 
 			<p>Our DNA construct (<b>Figure</b>) consists of the gene encoding for Lip<sub>BA</sub> flanked by several parts from the iGEM registry:</p>
 
-			<p> TODO please include the image ''invitro_project_design_image_2" </p>
-
-			<p><i>image 2: Construct that we synthesized. Starting with the iGEM prefix with its typical restriction sites (EcoRI, NotI, XbaI). Flanked by BglII restriction sites the constitutive promotor (BBa_J23119) is following. Through the inserted restriction sites, we can easily cut out the promotor if overexpression of the lipase is harmful to the bacteria. Followed by a ribosomal binding site (BBa_B0030), the Lip<sub>BA</sub> and the following terminator of transcription (BBa_K864600). At the 3' end  is the iGEM suffix with its typical restriction sites (SpeI, NotI, PstI). </i></p>
+			<SubtitleImage subtitle="Image 2: Construct that we synthesized. Starting with the iGEM prefix with its typical restriction sites (EcoRI, NotI, XbaI). Flanked by BglII restriction sites the constitutive promotor (BBa_J23119) is following. Through the inserted restriction sites, we can easily cut out the promotor if overexpression of the lipase is harmful to the bacteria. Followed by a ribosomal binding site (BBa_B0030), the LipBA and the following terminator of transcription (BBa_K864600). At the 3' end  is the iGEM suffix with its typical restriction sites (SpeI, NotI, PstI)." src="https://2019.igem.org/wiki/images/0/0e/T--Potsdam--invitro_design_2.png"/>
 
 			<p>This fragment gets cloned into the pBluepSLiCE-vector (following called pSLiCE-vector) via standard digestion-ligation protocols <b>(Figure)</b>. The pSLICE-vector is a low copy number which contains an Ampicillin-resistance gene and a <i>lacZ</i> repressor operon. This allows inducible activation of a T7 promoter and, thus, expression of the gene of interest.</p>
 
-			<p> TODO please include the image "invitro_project_design_image_3"</p>
+			<SubtitleImage width="45vw" subtitle="Image 3: Plasmid map of pSLiCE with origin of replication, Ampicillin-resistance, T7 and T3 promotor and our inserted construct" src="https://2019.igem.org/wiki/images/f/f8/T--Potsdam--invitro_design_3.png"/>
 
-			<p><i>Image 3: Plasmid map of pSLiCE with origin of replication, Ampicillin-resistance, T7 and T3 promotor and our inserted construct</i></p>
 
 			<p>The construct, designed above, gets transformed into the expressing strain <i>E. coli </i> strain BL21(DE3) with oligonucleotides flanking the Lip<sub>BA</sub> gene. We will introduce mutations at random points within its sequence by <b>ep-PCR</b>. Our plan is to create a <b>library with many sequence variants of Lip<sub>BA</sub></b>. In order to test the conditions we will first create a test-library to find out the best ones for the epPCR. </p>
 
@@ -201,8 +196,6 @@ function Design() {
 			<p> <b>The best conditions for our screening? </b>With test-screenings of the BL21(DE3), using inserted pSLiCE ligated with Lip<sub>BA</sub> we check the conditions where we get the best screening results, e. g. the pH value, which ester we use as substrate, the substrate concentration and the wavelength.  </p>
 
 			<p><b> References:</b> </p>
-
-			<p> https://genome.cshlp.org/content/2/1/28https://ci.nii.ac.jp/naid/10003752379/</p>
 
 			<p><b>1.</b> Cai, X., Ma, J., Wei, D. Z., Lin, J. P., and Wei, W. (2014). Functional expression of a novel alkaline-adapted lipase of Bacillus amyloliquefaciens from stinky tofu brine and development of immobilized enzyme for biodiesel production. Antonie Van Leeuwenhoek, 106(5), 1049-1060.</p>
 

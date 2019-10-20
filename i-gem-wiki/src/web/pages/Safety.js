@@ -30,7 +30,7 @@ function Safety() {
 				 were used regularly during the screening procedure. Working with this needed extra care and responsibility. 
 				Chemicals such as Ethidium Bromide were avoided and replaced by non-toxic DNA dyes. </p>
 
-				<h3> Safety and security in <i> in silico </i> project </h3>
+				<h3> Safety and security in the <i> in-silico </i> project </h3>
 
 				<p>It seems like a challenging task to check sequences before actually sequencing them but during our research 
 				we learned that there are also methods in the in silico design to ensure biosafety. Therefore, we contacted

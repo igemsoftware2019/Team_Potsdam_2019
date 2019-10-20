@@ -1,0 +1,26 @@
+.subtitle-container{
+  text-align: center;
+}
+
+.subtitle{
+  font-style: italic;
+  font-weight: 600;
+}
+
+.subtitle-image{
+  display: inline-block;
+  max-width: 60vw;
+  margin: 0 auto;
+  background: white;
+  border-radius: 5px;
+  background-size: cover;
+  background-position: center center;
+  transition: box-shadow 0.5s;
+  will-change: transform;
+  border: 15px solid white;
+  margin: 20px auto; 
+}
+
+.subtitle-image:hover {
+  box-shadow: 0px 30px 100px -10px rgba(0, 0, 0, 0.4);
+}
