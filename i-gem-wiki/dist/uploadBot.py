@@ -36,7 +36,7 @@ web.click("Save Page")
 
 urls = ['Team:Potsdam','Team:Potsdam/','Team:Potsdam/Team','Team:Potsdam/Collaborations','Team:Potsdam/Description','Team:Potsdam/Design',
 		'Team:Potsdam/Experiments','Team:Potsdam/Notebook','Team:Potsdam/Contribution','Team:Potsdam/Results','Team:Potsdam/Demonstrate',
-		'Team:Potsdam/Improve','Team:Potsdam/Attributions','Team:Potsdam/Safety','Team:Potsdam/Human_Practices','Team:Potsdam/Model',]
+		'Team:Potsdam/Improve','Team:Potsdam/Attributions','Team:Potsdam/Safety','Team:Potsdam/Human_Practices','Team:Potsdam/Model','Team:Potsdam/Sponsoring']
 #Update Template for all pages
 for url in urls:
 	web.go_to('https://2019.igem.org/wiki/index.php?title='+url+'&action=edit') 

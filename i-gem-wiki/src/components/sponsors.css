@@ -33,6 +33,11 @@
   width:  calc(2.45vw * 5.5);
   height: calc(1.00vw * 5.5);
 }
+.w250{
+  width:  calc(2.85vw * 5.5);
+  height: calc(1.00vw * 5.5);
+  right: 25vw;
+}
 .w460{
   top: calc(.20vw * 5.5);
   width:  calc(2.30vw * 5.5);
@@ -44,3 +49,9 @@
   height: calc(.50vw * 5.5);
 }
 
+.w500{
+  top: calc(.20vw * 5.5);
+  width:  calc(2.64vw * 5.5);
+  height: calc(.50vw * 5.5);
+  right: 25vw;
+}

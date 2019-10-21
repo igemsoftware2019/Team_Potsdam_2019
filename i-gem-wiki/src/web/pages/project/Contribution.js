@@ -11,9 +11,9 @@ function Contribution() {
   return (
   <div className="page" onMouseMove={onMove} onScroll={onScroll}>
       <CustomScrollbar>
-        <BackgroundImage scroll={scroll} xy={xy} title="Contribution" src="https://2019.igem.org/wiki/images/3/3a/T--Potsdam--group_picture.jpg"/>
+        <BackgroundImage scroll={scroll} xy={xy} title="Contribution" src="https://2019.igem.org/wiki/images/7/7f/T--Potsdam--contribution.jpg"/>
         <div className="main-content">
-          <div className="page-text">
+          <div className="page-text green">
             <h1>Contribution</h1>
             <p>We wanted to make at least a part of our model easily accessible for 
             everyone on our website which is why we implemented it into our web 

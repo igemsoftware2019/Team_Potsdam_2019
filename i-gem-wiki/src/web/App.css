@@ -17,6 +17,13 @@ body{
   color: #2dcf5b;
 }*/
 
+.grayLink{
+  font-style: italic;
+  color: gray;
+}
+.grayLink > a {
+  color: gray; 
+}
 
 .app-container {
   text-align: center;
@@ -155,6 +162,28 @@ h3{
 }
 
 
+.quote2 {
+  position: relative;
+  font-size: 30px;
+  line-height: 30px;
+  color: #218a41;
+  padding: 10px 0 0 30px;
+  font-style: italic;
+  font-weight: 500;
+  z-index: 1;
+}
+.quote2:before {
+  content: '\201C';
+  font-family: 'Sanchez', serif;
+  position: absolute;
+  top: 20px;
+  color: #cacaca;
+  font-size: 110px;
+  z-index: -1;
+  margin: 0 0 0 -30px;
+  font-weight: bold;
+  
+}
 .butnblue {
   -webkit-border-radius: 28;
   -moz-border-radius: 28;
@@ -263,4 +292,9 @@ pre {
     white-space: -pre-wrap;      /* Opera 4-6 */
     white-space: -o-pre-wrap;    /* Opera 7 */
     word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+.protocol{
+  background-color: #fff;
+  padding: 0 10px;
 }

@@ -6,10 +6,10 @@
 
 .logoHome{
   width: 40vw;
-  height: 40vw;
+  height: 60vh;
   position: absolute;
   left: 7vw;
-  top: 7vw;
+  top: 12vh;
 }
 .logoHome img {
   max-width: 100%;
@@ -17,7 +17,7 @@
   height: auto;
 }
 .openerText{
-  top: 12vw;
+  top: 14vh;
   position: absolute;
   left: 45vw;
   width: 45vw;
@@ -26,19 +26,26 @@
   font-size: calc(15*0.5vw);
   font-weight: bold;
   color: #fff;
+  text-shadow: -1px 0 2px black, 0 1px 2px black, 1px 0 2px black, 0 -1px 2px black;
 }
 .openerText > p:nth-child(2){
   font-size: calc(4*0.5vw);
   font-style: italic;
   color: #fff;
+  text-shadow: -1px 0 2px black, 0 1px 2px black, 1px 0 2px black, 0 -1px 2px black;
 }
 
 .openerText > p:nth-child(3){
   font-size: calc(4.5*0.5vw);
   font-weight: bold;
   color: #fff;
+  text-shadow: -1px 0 2px black, 0 1px 2px black, 1px 0 2px black, 0 -1px 2px black;
 }
-
+@media (max-width: 1000px) {
+  .page > div:nth-child(1) > div:nth-child(1) > div:nth-child(4) > div:nth-child(1) > span{
+      margin-right:0!important; 
+  }
+}
 iframe{
   position: absolute;
   left: 50%;
@@ -51,4 +58,84 @@ iframe{
   top: 50%;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
+}
+
+.teamImage{
+  width: 130%;
+  margin: -5% 0 0 -20%;
+  position: relative;
+  z-index: 1;
+}
+.teamImage img {
+   width: 100%;
+}
+
+.labImage{
+  width: 130%;
+  margin: -5% 0 0 0;
+  position: relative;
+  z-index: 1;
+}
+.labImage img {
+   width: 100%;
+}
+.backgroundVideo{
+  width: 100%;
+
+  margin: -5% 0 0 0;
+}
+.backgroundVideo2{
+  width: 100%;
+  margin: -5% 0 0 0;
+}
+
+.overviewImage{
+  margin-left: 50px;
+}
+.insilicoText1{
+  top: calc(150px + 20vw);
+  font-size: 1.5vw;
+  left: 18vw;
+  position: absolute;
+  width: 25%;  
+}
+.invitroText1{
+  top: calc(150px + 24vw);
+  font-size: 1.5vw;
+  right: 17.5vw;
+  position: absolute;
+  width: 25%;  
+}
+
+.insilicoText2{
+  top: calc(150px + 42vw);
+  font-size: 1.5vw;
+  left: 16vw;
+  position: absolute;
+  width: 25%;  
+}
+.invitroText2{
+  top: calc(150px + 37vw);
+  font-size: 1.5vw;
+  right: 17.5vw;
+  position: absolute;
+  width: 25%;  
+}
+
+.insilicoText3{
+  top: calc(150px + 62vw);
+  font-size: 1.5vw;
+  left: 18vw;
+  position: absolute;
+  width: 25%;  
+}
+.invitroText3 > p{
+  margin: 0!important;
+}
+.invitroText3{
+  top: calc(150px + 60vw);
+  font-size: 1.5vw;
+  right: 17.5vw;
+  position: absolute;
+  width: 30%;  
 }

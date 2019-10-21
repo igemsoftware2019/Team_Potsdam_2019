@@ -11,9 +11,9 @@ function Safety() {
   return (
   <div className="page" onMouseMove={onMove} onScroll={onScroll}>
       <CustomScrollbar>
-        <BackgroundImage scroll={scroll} xy={xy} title="Safety" src="https://2019.igem.org/wiki/images/3/3a/T--Potsdam--group_picture.jpg"/>
+        <BackgroundImage scroll={scroll} xy={xy} title="Safety" src="https://2019.igem.org/wiki/images/6/6b/T--Potsdam--lab.png"/>
         <div className="main-content">
-        	<div className="page-text blue">
+        	<div className="page-text green">
 				<h1>Safety first – everything else second!</h1>
 
 				<p> In the iGEM competition, biosafety is a very important part. This is not only general safety during the work 

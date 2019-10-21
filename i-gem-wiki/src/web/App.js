@@ -15,12 +15,12 @@ import Collaborations from "./pages/team/Collaborations";
 import Description from "./pages/project/Description";
 import Design from "./pages/project/Design";
 import Experiments from "./pages/project/Experiments";
-import Notebook from "./pages/project/Notebook";
 import Contribution from "./pages/project/Contribution";
 import Results from "./pages/project/Results";
 import Demonstrate from "./pages/project/Demonstrate";
 import Improve from "./pages/project/Improve";
 import Attributions from "./pages/project/Attributions";
+import Sponsoring from "./pages/project/Sponsoring";
 
 import Safety from "./pages/Safety";
 
@@ -42,12 +42,12 @@ class App extends Component {
           <Route path="/Description" component={Description}/>
           <Route path="/Design" component={Design}/>
           <Route path="/Experiments" component={Experiments}/>
-          <Route path="/Notebook" component={Notebook}/>
           <Route path="/Contribution" component={Contribution}/>
           <Route path="/Results" component={Results}/>
           <Route path="/Demonstrate" component={Demonstrate}/>
           <Route path="/Improve" component={Improve}/>
           <Route path="/Attributions" component={Attributions}/>
+          <Route path="/Sponsoring" component={Sponsoring}/>
 
           <Route path="/Safety" component={Safety}/>
 

@@ -11,7 +11,7 @@ export default [
   {
     image: 'https://2019.igem.org/wiki/images/a/af/T--Potsdam--member_15.jpg',
     name: 'Jonas Kopka',
-    quote: 'An individual quote from you',
+    quote: 'We are here to have fun :)',
     text: 'Did pipette an agar platte with promising growing microorganisms. Apart from that I only worked on the insilico projects.',
     tags:['web','insilico','human practice'],
     height:0
@@ -20,7 +20,7 @@ export default [
     image: 'https://2019.igem.org/wiki/images/c/c2/T--Potsdam--member_0.jpg',
     name: 'Olamide A. Ahmed-Macaulay',
     quote: 'Think twice, do it once',
-    text: 'Participate in the wet lab activities and monitors the Twitter handle of the team',
+    text: 'Participated in the wet lab activities and monitored the Twitter handle of the team',
     tags:['invitro'],
     height:0
   },
@@ -30,6 +30,13 @@ export default [
     quote: 'To know your enemy, you must become your enemy - Sun Tzu, The Art of War (he\'s talking about lab work)',
     text: 'Not sure why but I decided to go for another year after 2017. Definitely some masochistic tendencies but that’s iGEM for you, I guess. At least the teammates suffer with you ;)',
     tags: ['invitro','lead'],
+    height:0
+  },{
+    image: 'https://2019.igem.org/wiki/images/c/c9/T--Potsdam--member_17.png',
+    name: 'Kristian Ehlert',
+    quote: 'Life would be tragic if it weren\'t funny.- Stephen Hawking-model page needs review',
+    text: 'Worked on improving model and data analysis',
+    tags:['insilico'],
     height:0
   },
   {
@@ -112,4 +119,5 @@ export default [
     tags:['invitro'],
     height:0
   },
+  
 ]

@@ -11,9 +11,9 @@ function Attributions() {
   return (
   <div className="page" onMouseMove={onMove} onScroll={onScroll}>
       <CustomScrollbar>
-        <BackgroundImage scroll={scroll} xy={xy} title="Attributions" src="https://2019.igem.org/wiki/images/3/3a/T--Potsdam--group_picture.jpg"/>
+        <BackgroundImage scroll={scroll} xy={xy} title="Attributions" src="https://2019.igem.org/wiki/images/a/ab/T--Potsdam--attribution2.jpg"/>
         <div className="main-content">
-        <div className="page-text blue">
+        <div className="page-text green">
         	<h1>Attributions</h1>
 			<p>We want to thank everyone involved in this great adventure and for the fun times this past year! </p>
 			<h3>Supervision and team leaders</h3>
