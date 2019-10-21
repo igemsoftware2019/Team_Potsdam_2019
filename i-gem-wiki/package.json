@@ -37,7 +37,7 @@
     "build:react": "react-scripts build",
     "build:bundle": "webpack --config webpack.config.js",
     "build:igem": "cd ./dist/scripts/ && node buildTemplate.js",
-    "deploy": "activate p36 && cd ./dist && python uploadBot.py",
+    "deploy": "activate p35 && cd ./dist && python uploadBot.py",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

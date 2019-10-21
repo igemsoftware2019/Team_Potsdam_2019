@@ -119,5 +119,13 @@ export default [
     tags:['invitro'],
     height:0
   },
+  {
+    image: 'https://2019.igem.org/wiki/images/f/f4/T--Potsdam--member_2.jpg',
+    name: 'Aleksandra Khatova',
+    quote: 'Evidence is the only good reason to believe anything - Richard Dawkins',
+    text: '',
+    tags:['invitro'],
+    height:0
+  },
   
 ]

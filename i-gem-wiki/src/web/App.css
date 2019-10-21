@@ -16,7 +16,9 @@ body{
   background: #f2fcf5;
   color: #2dcf5b;
 }*/
-
+.box{
+  overflow-x: hidden!important;
+}
 .grayLink{
   font-style: italic;
   color: gray;
